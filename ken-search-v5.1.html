@@ -319,8 +319,26 @@ body{
 .pill-input::placeholder{color:rgba(0,0,0,.5);}
 .pill-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
 .mic-img{width:20px;height:20px;display:block;}
-.clear-x{width:22px;height:22px;border-radius:50%;background:#f9f7f6;border:1px solid rgba(0,0,0,.05);display:none;align-items:center;justify-content:center;cursor:pointer;}
-.clear-x img{width:8px;height:8px;display:block;}
+.clear-x{
+  width:22px;height:22px;border-radius:50%;
+  background:#f9f7f6;
+  border:1px solid rgba(0,0,0,.05);
+  display:none;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:border-color .2s ease, transform .25s ease;
+}
+.clear-x img{
+  width:8px;height:8px;display:block;
+  opacity:.8;
+  transition:opacity .2s ease;
+}
+.clear-x:hover{
+  border-color:rgba(0,0,0,.12);
+  transform:rotate(180deg);
+}
+.clear-x:hover img{
+  opacity:1;
+}
 
 /* ── BOTTOM WRAPPER full width ── */
 @media(max-width:440px){
