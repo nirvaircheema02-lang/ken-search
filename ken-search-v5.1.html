@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ken Research – Search Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..14,400;9..14,500;9..14,600;9..14,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;width:100%;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#fff;
+  min-height:100vh;
+  min-height:100dvh;
+}
+
+/* ── PHONE SHELL → now full-screen page ── */
+.phone{
+  width:100%;
+  height:100vh;
+  height:100dvh;
+  position:relative;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+/* ── NAV ── */
+.nav{
+  height:60px;flex-shrink:0;background:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;
+  box-shadow:0 8px 6px rgba(128,108,224,.15);
+  position:relative;z-index:20;
+}
+.nav-logo{display:flex;align-items:center;gap:6px;}
+.nav-logo .lm{width:14.8px;height:20px;display:block;}
+.nav-logo .lw{width:137px;height:10.6px;display:block;}
+.nav-ham{display:flex;flex-direction:column;gap:5px;cursor:pointer;}
+.nav-ham span{display:block;width:24px;height:2.5px;background:#141016;border-radius:99px;}
+
+/* ── SCROLLABLE HOME ── */
+.home-scroll{
+  flex:1;overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;min-height:0;
+  background:linear-gradient(108.3deg,
+    rgb(252,252,252) 0%,rgb(253,253,253) 25%,rgb(255,255,255) 50%,
+    rgb(253,253,255) 58.3%,rgb(252,252,254) 66.7%,rgb(250,250,254) 75%,
+    rgb(248,248,254) 83.3%,rgb(247,247,253) 91.7%,rgb(245,245,253) 100%);
+}
+.home-scroll::-webkit-scrollbar{width:0;}
+.hero{padding:96px 24px 0;overflow:visible;}
+.badge{display:inline-flex;align-items:center;height:41.3px;padding:0 16px;border-radius:9999px;border:.653px solid rgba(128,108,224,.2);background:linear-gradient(90deg,rgba(128,108,224,.1),rgba(176,31,36,.1));font-size:12px;font-weight:500;color:#806ce0;margin-bottom:16px;white-space:nowrap;}
+.hero h1{font-size:48px;font-weight:700;color:#141016;line-height:52.8px;width:100%;max-width:345px;margin-bottom:16px;}
+.hero-p{font-size:18px;font-weight:400;color:#656565;line-height:28px;width:100%;max-width:345px;margin-bottom:24px;}
+.btn-row{display:flex;gap:12px;margin-bottom:24px;}
+.btn-red{height:48px;padding:0 32px;border-radius:5px;border:none;background:linear-gradient(90deg,rgb(176,31,36) 0%,rgb(218,61,66) 35.71%,rgb(235,72,78) 50%,rgb(218,61,66) 64.29%,rgb(176,31,36) 100%);color:#fff;font-size:16px;font-weight:500;font-family:'DM Sans',sans-serif;letter-spacing:.0875px;cursor:pointer;box-shadow:0 4px 16px rgba(176,31,36,.15);white-space:nowrap;}
+.btn-wh{height:48px;padding:0 32px;border-radius:5px;border:.653px solid #e6e6e6;background:#fff;color:#141016;font-size:16px;font-weight:500;font-family:'DM Sans',sans-serif;letter-spacing:.0875px;cursor:pointer;white-space:nowrap;}
+.biz-wrap{position:relative;width:345px;height:400px;overflow:visible;}
+.biz-img{width:345px;height:400px;border-radius:20px;object-fit:cover;display:block;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);}
+.biz-grad{position:absolute;inset:0;border-radius:20px;background:linear-gradient(to top,rgba(20,16,22,.2),transparent);}
+.biz-card{position:absolute;left:-24px;top:321px;width:214px;background:#fff;border:.653px solid rgba(20,16,22,.1);border-radius:16px;padding:24px;box-shadow:0 20px 12.5px rgba(0,0,0,.1),0 8px 5px rgba(0,0,0,.1);display:flex;align-items:center;gap:16px;}
+.biz-av{width:48px;height:48px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,rgb(128,108,224),rgb(176,31,36));display:flex;align-items:center;justify-content:center;}
+.biz-av img{width:24px;height:24px;display:block;}
+.biz-val{font-size:24px;font-weight:700;color:#141016;line-height:36px;}
+.biz-lbl{font-size:12px;font-weight:400;color:#656565;line-height:18px;}
+.dark-stats{background:#141016;padding:64px 24px 48px;display:grid;grid-template-columns:1fr 1fr;gap:8px 0;margin-top:80px;}
+.ds{text-align:center;padding:10px 8px;}
+.ds-n{font-size:40px;font-weight:700;color:#fff;line-height:60px;}
+.ds-l{font-size:14px;font-weight:400;color:rgba(252,252,252,.7);line-height:21px;}
+.why{background:#fff;padding:96px 24px 60px;}
+.why h2{font-size:40px;font-weight:700;color:#141016;line-height:60px;text-align:center;margin-bottom:16px;}
+.why-sub{font-size:18px;font-weight:400;color:#656565;line-height:27px;text-align:center;margin-bottom:64px;}
+.feat{background:#fcfcfc;border:.653px solid rgba(20,16,22,.1);border-radius:16px;padding:32px;margin-bottom:16px;}
+.feat-ic{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,rgba(128,108,224,.1),rgba(176,31,36,.1));display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.feat-ic img{width:32px;height:32px;display:block;}
+.feat-t{font-size:20px;font-weight:700;color:#141016;line-height:30px;margin-bottom:8px;}
+.feat-d{font-size:14px;font-weight:400;color:#656565;line-height:22px;}
+
+/* ── OVERLAY ── */
+.overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.8);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  z-index:30;opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.overlay.show{opacity:1;pointer-events:auto;}
+
+/* ══════════════════════════════════════
+   BOTTOM WRAPPER
+   Figma outer padding: 16px sides + bottom
+   ══════════════════════════════════════ */
+.bottom-wrap{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:0 16px 16px;
+  z-index:50;
+  max-height:780px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  pointer-events:none;
+}
+
+/* ══════════════════════════════════════
+   WHITE CARD
+   Idle:   transparent bg, no padding — just pill floats
+   Active: white bg, 20px radius, 12px padding, 16px gap
+   ══════════════════════════════════════ */
+.card{
+  background:transparent;
+  border-radius:20px;
+  padding:0;
+  display:flex;flex-direction:column;
+  gap:0;overflow:hidden;
+  pointer-events:auto;
+  transition:background-color .3s ease, border-radius .3s ease, padding .3s ease, gap .3s ease;
+}
+.card.active{
+  background:#fff;
+  border-radius:20px;
+  padding:12px;   /* Figma: p-[12px] */
+  gap:16px;       /* Figma: gap-[16px] */
+}
+
+/* ── STEP 1: RECENT SEARCHES — animate in ── */
+.sec-recent{
+  flex-shrink:0;
+  max-height:0;opacity:0;overflow:hidden;
+  display:flex;flex-direction:column;gap:8px;
+  transition:max-height .35s ease, opacity .25s ease;
+}
+.sec-recent.show{max-height:300px;opacity:1;}
+
+/* ══════════════════════════════════════
+   REPORTS SECTION
+
+   STEP 2 (typing):
+     → no scroll
+     → 5 reports shown naturally
+     → Frequently Searches below reports
+     → everything fits without overflow
+
+   STEP 3 (complete):
+     → sticky "Latest Reports" header
+     → scrollable list of 20 reports
+     → Frequently Searches HIDDEN
+   ══════════════════════════════════════ */
+.sec-reports{
+  flex:1;min-height:0;
+  max-height:0;opacity:0;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  transition:max-height .35s ease, opacity .25s ease;
+}
+.sec-reports.show{
+  max-height:640px;
+  opacity:1;
+}
+
+/* Panel header row */
+.rep-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2px 0 8px;flex-shrink:0;
+  background:#fff;z-index:5;
+}
+.p-title{font-size:12.8px;font-weight:600;color:rgba(0,0,0,.9);line-height:16px;}
+.p-link{display:flex;align-items:center;gap:4px;font-size:12.8px;font-weight:500;color:#b01f24;line-height:21px;cursor:pointer;white-space:nowrap;}
+.p-link img{width:16px;height:16px;display:block;}
+
+/* ─── STEP 2 (typing class on sec-reports) ─── */
+/* Reports list: no overflow, natural height, no extra items */
+.sec-reports.typing .rep-scroll{
+  overflow:visible;
+  flex:0 0 auto;
+  max-height:none;
+}
+.sec-reports.typing .r-extra{ display:none; }
+/* Step 2: only show 4 reports — hide the 5th base item */
+.sec-reports.typing .r-base-5{ display:none; }
+
+/* ─── STEP 3 (complete class on sec-reports) ─── */
+/* Reports list: scrollable, shows all 20 items */
+.sec-reports.complete .rep-scroll{
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  flex:1;min-height:0;
+}
+.sec-reports.complete .r-extra{ display:flex; }
+/* Hide Frequently Searches in step 3 */
+.sec-reports.complete .freq-sec{ display:none; }
+
+/* Reports scroll container */
+.rep-scroll{
+  flex:0 0 auto;
+  overflow:hidden;
+}
+.rep-scroll::-webkit-scrollbar{width:3px;}
+.rep-scroll::-webkit-scrollbar-track{background:transparent;}
+.rep-scroll::-webkit-scrollbar-thumb{background:rgba(0,0,0,.18);border-radius:2px;}
+
+/* Report row — Default state (Figma: white bg, drop-shadow small) */
+.ritem{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  padding:8px 12px;
+  border-bottom:.5px solid rgba(0,0,0,.06);
+  cursor:pointer;
+  border-radius:5px;
+  background:transparent;
+  box-shadow:0 1px 1px rgba(0,0,0,.08), 0 0 2px rgba(0,0,0,.02);
+  transition:background .18s ease, box-shadow .18s ease;
+}
+.ritem:last-child{border-bottom:none;}
+/* Figma hover state:
+   bg → rgba(0,0,0,0.06)
+   shadow → stronger: 0 1px 2px / 0 0 4px
+   title → rgba(0,0,0,0.8)
+   r-cat bg → #fff
+   r-arr bg → #fff */
+.ritem:hover{
+  background:rgba(0,0,0,.06);
+  box-shadow:0 1px 2px rgba(0,0,0,.08), 0 0 4px rgba(0,0,0,.02);
+  border-bottom-color:transparent;
+}
+.ritem:hover .r-title{ color:rgba(0,0,0,.8); }
+.ritem:hover .r-cat{ background:#fff; }
+.ritem:hover .r-arr{ background:#fff; }
+
+/* Figma: items-start so category tag only wraps its text */
+.r-body{
+  display:flex;flex-direction:column;gap:4px;flex:1;min-width:0;
+  align-items:flex-start;
+}
+/* Default title: rgba(0,0,0,0.6) — transitions to .8 on hover */
+.r-title{
+  font-size:12.8px;font-weight:400;
+  color:rgba(0,0,0,.6);line-height:1.45;
+  transition:color .18s ease;
+}
+/* Category tag — default bg rgba(0,0,0,0.04), turns white on hover */
+.r-cat{
+  display:inline-flex;align-items:center;
+  background:rgba(0,0,0,.04);
+  border-radius:2.5px;padding:2px 4px;
+  font-size:11px;font-weight:400;color:rgba(0,0,0,.6);line-height:14px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  flex-shrink:0;max-width:100%;
+  transition:background .18s ease;
+}
+/* Arrow circle — default bg rgba(0,0,0,0.04), turns white on hover */
+.r-arr{
+  width:21px;height:21px;flex-shrink:0;
+  background:rgba(0,0,0,.04);border-radius:40px;
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+  transition:background .18s ease;
+}
+.r-arr img{width:12px;height:12px;display:block;transform:rotate(-35deg);}
+
+/* Divider */
+.divider{height:1px;background:#d9d9d9;margin:8px 0;flex-shrink:0;}
+
+/* Tags */
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.06);font-size:14px;font-weight:400;color:rgba(0,0,0,.4);cursor:pointer;line-height:23.8px;}
+.tag.on{background:rgba(0,0,0,.12);color:rgba(0,0,0,.8);font-size:12.8px;}
+.tag img{width:12px;height:12px;display:block;}
+
+/* Frequently Searched — sits below reports in step 2 */
+.freq-sec{
+  flex-shrink:0;
+  display:flex;flex-direction:column;gap:8px;
+  padding-top:4px;
+}
+
+/* ── SEARCH PILL ── */
+.pill{
+  width:100%;height:48px;
+  border:1.33px solid #c3c6f9;
+  border-radius:40px;background:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;cursor:text;
+  flex-shrink:0;position:relative;
+  box-shadow:0 0 8px -2px rgba(176,31,36,.12);
+  pointer-events:auto;
+}
+.pill-left{display:flex;align-items:center;flex:1;min-width:0;}
+.pill-input{flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:14px;font-weight:400;font-family:'DM Sans',sans-serif;color:rgba(0,0,0,.8);line-height:20px;caret-color:#141016;}
+.pill-input::placeholder{color:rgba(0,0,0,.5);}
+.pill-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.mic-img{width:20px;height:20px;display:block;}
+.clear-x{width:22px;height:22px;border-radius:50%;background:#f9f7f6;border:1px solid rgba(0,0,0,.05);display:none;align-items:center;justify-content:center;cursor:pointer;}
+.clear-x img{width:8px;height:8px;display:block;}
+
+/* ── BOTTOM WRAPPER full width ── */
+@media(max-width:440px){
+  .bottom-wrap{max-height:calc(100dvh - 60px - 16px);}
+}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <img class="lm" src="https://www.figma.com/api/mcp/asset/1b69ee90-f2cb-4856-8c3c-01c18e523b83" alt="">
+      <img class="lw" src="https://www.figma.com/api/mcp/asset/4b3e2584-55b0-47be-9de0-8b8cd6b9e7e4" alt="">
+    </div>
+    <div class="nav-ham"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- HOME SCROLL -->
+  <div class="home-scroll">
+    <div class="hero">
+      <div class="badge">Industry Leading Research</div>
+      <h1>Transform Your Business with Data-Driven Insights</h1>
+      <p class="hero-p">Access comprehensive market research, industry reports, and expert consulting services across 500+ industries worldwide.</p>
+      <div class="btn-row">
+        <button class="btn-red">Explore Reports</button>
+        <button class="btn-wh">Book a Call</button>
+      </div>
+      <div class="biz-wrap">
+        <img class="biz-img" src="https://www.figma.com/api/mcp/asset/a2e4a878-19f3-474d-ba98-3591e3dbd4c2" alt="Business team">
+        <div class="biz-grad"></div>
+        <div class="biz-card">
+          <div class="biz-av"><img src="https://www.figma.com/api/mcp/asset/cf64654c-ef68-475e-aee3-5b6cf04ebf0b" alt=""></div>
+          <div><div class="biz-val">10 Lac+</div><div class="biz-lbl">Reports Published</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="dark-stats">
+      <div class="ds"><div class="ds-n">500+</div><div class="ds-l">Industries Covered</div></div>
+      <div class="ds"><div class="ds-n">10 Lac+</div><div class="ds-l">Research Reports</div></div>
+      <div class="ds"><div class="ds-n">150+</div><div class="ds-l">Countries Analyzed</div></div>
+      <div class="ds"><div class="ds-n">25 Years</div><div class="ds-l">Industry Experience</div></div>
+    </div>
+    <div class="why">
+      <h2>Why Choose Ken Research</h2>
+      <p class="why-sub">We provide comprehensive market intelligence and strategic insights to help businesses make informed decisions.</p>
+      <div class="feat"><div class="feat-ic"><img src="https://www.figma.com/api/mcp/asset/84b853dd-b490-4425-9e70-b196bc7b3892" alt=""></div><div class="feat-t">Comprehensive Coverage</div><div class="feat-d">Access research across 500+ industries with in-depth analysis and market trends.</div></div>
+      <div class="feat"><div class="feat-ic"><img src="https://www.figma.com/api/mcp/asset/eff5d818-dfa6-43bc-a888-47dcc516aa47" alt=""></div><div class="feat-t">Expert Insights</div><div class="feat-d">Our team of analysts brings decades of experience across diverse sectors.</div></div>
+      <div class="feat"><div class="feat-ic"><img src="https://www.figma.com/api/mcp/asset/b733708f-634a-4f41-9ce2-379633ee0c2c" alt=""></div><div class="feat-t">Custom Research</div><div class="feat-d">Tailored research solutions designed specifically for your business needs.</div></div>
+    </div>
+  </div>
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay" onclick="onOverlayClick()"></div>
+
+  <!-- BOTTOM WRAPPER -->
+  <div class="bottom-wrap">
+    <div class="card" id="card">
+
+      <!-- ══ STEP 1: RECENT SEARCHES ══ -->
+      <div class="sec-recent" id="sec-recent">
+        <div class="rep-head">
+          <span class="p-title">Recent Searches</span>
+        </div>
+        <div class="tags">
+          <div class="tag" onclick="pick('Car Industry')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">Car Industry</div>
+          <div class="tag on" onclick="pick('Market outlook')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.8;">Market outlook</div>
+          <div class="tag" onclick="pick('AI Boom in 2025')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">AI Boom in 2025</div>
+          <div class="tag" onclick="pick('Car Manufacture company')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">Car Manufacture company</div>
+        </div>
+      </div>
+
+      <!-- ══ STEPS 2+3: REPORTS SECTION ══ -->
+      <div class="sec-reports" id="sec-reports">
+
+        <!-- ★ HEADER — sticky in step 3, normal in step 2 ★ -->
+        <div class="rep-head">
+          <span class="p-title">Latest Reports</span>
+          <div class="p-link">
+            Explore all reports
+            <img src="https://www.figma.com/api/mcp/asset/5d1b2cc0-499a-495c-b4b7-b30982b24a63" alt="">
+          </div>
+        </div>
+
+        <!-- ★ REPORTS LIST ★
+             Step 2 (typing):  no scroll — only base 5 items shown
+             Step 3 (complete): scrollable — all 20 items shown -->
+        <div class="rep-scroll" id="rep-scroll">
+
+          <!-- Base 5 items (always shown when sec-reports visible) -->
+          <div class="ritem"><div class="r-body"><div class="r-title">KSA Automotive Cloud Solutions Market Outlook to 2030</div><span class="r-cat">Telecommunications and Networking</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem"><div class="r-body"><div class="r-title">United Kingdom Used Car Market</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem"><div class="r-body"><div class="r-title">KSA Automotive Repair and Maintenance Market Outlook to 2030</div><span class="r-cat">Agriculture and Animal Care</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem"><div class="r-body"><div class="r-title">Asia Pacific Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-base-5"><div class="r-body"><div class="r-title">Philippines Used Car Finance Market Outlook to 2028</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+
+          <!-- Extra 15 items — step 3 (complete) only -->
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">India Used Car Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">GCC Used Car Market Outlook to 2028</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Global Automotive Aftermarket Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Southeast Asia Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">UAE Pre-Owned Vehicle Market Report 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Latin America Automotive Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">South Korea Used Car Market Analysis 2025–2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Nigeria Automotive Market Research Report 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Germany Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Australia Used Car Finance Market Outlook to 2028</div><span class="r-cat">Financial Services</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Electric Vehicle Resale Market — Global Outlook 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Middle East Used Commercial Vehicle Market 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Vietnam Automotive Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Brazil Used Car Market — Emerging Trends 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">China Second-Hand Vehicle Market Forecast 2025–2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+
+        </div><!-- /rep-scroll -->
+
+        <!-- ★ FREQUENTLY SEARCHES — shown below reports in step 2, hidden in step 3 ★ -->
+        <div class="freq-sec" id="freq-sec">
+          <div class="divider"></div>
+          <span class="p-title" style="color:rgba(0,0,0,.9);">Frequently Searches</span>
+          <div class="tags">
+            <div class="tag" onclick="pick('Car Industry')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">Car Industry</div>
+            <div class="tag on" onclick="pick('Market outlook')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.8;">Market outlook</div>
+            <div class="tag" onclick="pick('AI Boom in 2025')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">AI Boom in 2025</div>
+            <div class="tag" onclick="pick('Car Manufacture company')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">Car Manufacture company</div>
+          </div>
+        </div>
+
+      </div><!-- /sec-reports -->
+
+      <!-- ★ SEARCH PILL — always at bottom of white card ★ -->
+      <div class="pill">
+        <div class="pill-left">
+          <input class="pill-input" id="inp" type="text"
+            placeholder="Search for 'IPO Management'"
+            autocomplete="off" spellcheck="false">
+        </div>
+        <div class="pill-right">
+          <img class="mic-img" id="mic" src="https://www.figma.com/api/mcp/asset/83cf574d-015e-496d-90fd-4c9affb25d75" alt="">
+          <div class="clear-x" id="clr" onclick="clearSearch()">
+            <img src="https://www.figma.com/api/mcp/asset/39ef2158-0b8d-469d-8e56-75d1efab0723" alt="">
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /card -->
+  </div><!-- /bottom-wrap -->
+
+</div><!-- /phone -->
+
+<script>
+const inp       = document.getElementById('inp');
+const overlay   = document.getElementById('overlay');
+const card      = document.getElementById('card');
+const mic       = document.getElementById('mic');
+const clr       = document.getElementById('clr');
+const secRecent = document.getElementById('sec-recent');
+const secRep    = document.getElementById('sec-reports');
+const repScroll = document.getElementById('rep-scroll');
+
+let state = 'idle';
+
+function setState(s) {
+  if (state === s) return;
+  state = s;
+
+  /* overlay */
+  overlay.classList.toggle('show', s !== 'idle');
+
+  /* card white bg */
+  card.classList.toggle('active', s !== 'idle');
+
+  /* step 1: recent searches */
+  secRecent.classList.toggle('show', s === 'recent');
+
+  /* steps 2+3: reports section */
+  const showRep = s === 'typing' || s === 'complete';
+  secRep.classList.toggle('show',     showRep);
+  secRep.classList.toggle('typing',   s === 'typing');
+  secRep.classList.toggle('complete', s === 'complete');
+
+  /* scroll to top of reports when entering step 3 */
+  if (s === 'complete') {
+    setTimeout(() => { repScroll.scrollTop = 0; }, 50);
+  }
+}
+
+function calcState(val) {
+  const v = val.trim();
+  if (!v) return 'recent';
+  return v.split(/\s+/).filter(Boolean).length >= 2 ? 'complete' : 'typing';
+}
+
+inp.addEventListener('focus', () => {
+  setState(calcState(inp.value));
+});
+
+inp.addEventListener('input', () => {
+  const v = inp.value;
+  mic.style.display = v ? 'none'  : 'block';
+  clr.style.display = v ? 'flex'  : 'none';
+  if (state !== 'idle') setState(calcState(v));
+});
+
+function onOverlayClick() {
+  inp.blur();
+  setState('idle');
+}
+
+function clearSearch() {
+  inp.value = '';
+  mic.style.display = 'block';
+  clr.style.display = 'none';
+  inp.focus();
+  setState('recent');
+}
+
+function pick(text) {
+  inp.value = text;
+  mic.style.display = 'none';
+  clr.style.display = 'flex';
+  inp.focus();
+  setState(calcState(text));
+}
+
+inp.addEventListener('blur', () => {
+  setTimeout(() => {
+    if (!document.activeElement || document.activeElement === document.body) {
+      setState('idle');
+    }
+  }, 150);
+});
+</script>
+</body>
+</html>
