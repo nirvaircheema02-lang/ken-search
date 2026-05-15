@@ -266,12 +266,42 @@ body{
 .tag.on{background:rgba(0,0,0,.12);color:rgba(0,0,0,.8);font-size:12.8px;}
 .tag img{width:12px;height:12px;display:block;}
 
-/* Frequently Searched — sits below reports in step 2 */
+/* Frequently Searched — horizontal scroll row with right fade, Figma-exact */
 .freq-sec{
   flex-shrink:0;
   display:flex;flex-direction:column;gap:8px;
   padding-top:4px;
+  position:relative; /* for fade overlay */
 }
+/* Figma: tags in single row, overflow-x scroll, no wrap */
+.freq-sec .tags{
+  display:flex;
+  flex-wrap:nowrap;        /* single row — no wrapping */
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  gap:8px;
+  padding-bottom:2px;      /* prevent clipping of box-shadows */
+  position:relative;
+}
+.freq-sec .tags::-webkit-scrollbar{ display:none; } /* hide scrollbar */
+/* Figma: fade gradient on right edge — rgba(255,255,255,0.7→0) */
+.freq-sec::after{
+  content:'';
+  position:absolute;
+  right:0;
+  top:28px; /* below the title label */
+  width:51px;
+  bottom:2px;
+  background:linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.7) 50%,
+    rgb(255,255,255) 100%);
+  pointer-events:none;
+  border-radius:0 8px 8px 0;
+  z-index:2;
+}
+/* Tags inside freq-sec must not shrink */
+.freq-sec .tag{ flex-shrink:0; }
 
 /* ── SEARCH PILL ── */
 .pill{
