@@ -130,8 +130,35 @@ body{
   max-height:0;opacity:0;overflow:hidden;
   display:flex;flex-direction:column;gap:8px;
   transition:max-height .35s ease, opacity .25s ease;
+  position:relative;
 }
 .sec-recent.show{max-height:300px;opacity:1;}
+/* Single horizontal scroll row — same as freq-sec */
+.sec-recent .tags{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  gap:8px;
+  padding-bottom:2px;
+}
+.sec-recent .tags::-webkit-scrollbar{display:none;}
+/* Right fade gradient — same as freq-sec */
+.sec-recent::after{
+  content:'';
+  position:absolute;
+  right:0;
+  top:28px;
+  width:51px;
+  bottom:2px;
+  background:linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.7) 50%,
+    rgb(255,255,255) 100%);
+  pointer-events:none;
+  z-index:2;
+}
+.sec-recent .tag{flex-shrink:0;}
 
 /* ══════════════════════════════════════
    REPORTS SECTION
