@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ken Research: A Perfect Alternative to Frost &amp; Sullivan</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+<!-- ═══ FIGMA IMAGE ASSETS ═══ -->
+<style>
+/* Real Figma asset URLs */
+:root {
+  /* Nav logo */
+  --img-logo-mark: url('https://www.figma.com/api/mcp/asset/7a5e5d54-25b6-4542-a70f-38c74aa33226');
+  --img-logo-text: url('https://www.figma.com/api/mcp/asset/5dac215c-9128-48c8-9849-f4a5681baf2e');
+  /* Hero brand logos */
+  --img-aramex:   'https://www.figma.com/api/mcp/asset/92483af2-64dc-473c-bed6-260dc33b5196';
+  --img-bosch:    'https://www.figma.com/api/mcp/asset/90b4ed1e-fe93-4889-9a48-b30bcea90ca1';
+  --img-flipkart: 'https://www.figma.com/api/mcp/asset/be3005bf-61ca-42e8-8144-93d06995f485';
+  --img-majid:    'https://www.figma.com/api/mcp/asset/105aa873-4cf9-423e-860b-96b49be2c7e3';
+  --img-logo5:    'https://www.figma.com/api/mcp/asset/9196e8b1-1079-4ec6-b66c-3099f5cbae54';
+}
+
+/* ═══════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:#fff;color:#1b1c1c;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+:root{
+  --red:#ba0013;
+  --red-table:#e31e24;
+  --dark:#141016;
+  --body:#1b1c1c;
+  --mid:#5f5e5e;
+  --light:#c8c6c6;
+  --warm:#f5f2f1;
+  --warm-card:#fbf9f8;
+  --warm-b:#e7bdb8;
+  --L:220px;
+  --W:1000px;
+  --serif:'Noto Serif',Georgia,serif;
+  --sans:'Manrope',sans-serif;
+  --inter:'Inter',sans-serif;
+}
+
+/* ═══ READING BAR ═══ */
+#rb{position:fixed;top:0;left:0;z-index:999;height:2px;background:var(--red);width:0}
+
+/* ═══════════════════════════════
+   SCROLL ANIMATIONS
+   ═══════════════════════════════ */
+[data-a]{opacity:0;transition:opacity 650ms cubic-bezier(.4,0,.2,1),transform 650ms cubic-bezier(.4,0,.2,1)}
+[data-a=up]{transform:translateY(40px)}
+[data-a=left]{transform:translateX(-50px)}
+[data-a=right]{transform:translateX(50px)}
+[data-a=scale]{transform:scale(0.95) translateY(16px)}
+[data-a=fade]{transform:none}
+/* delays */
+[data-d="1"]{transition-delay:80ms}
+[data-d="2"]{transition-delay:160ms}
+[data-d="3"]{transition-delay:240ms}
+[data-d="4"]{transition-delay:320ms}
+[data-d="5"]{transition-delay:400ms}
+[data-d="6"]{transition-delay:480ms}
+/* revealed */
+[data-a].on{opacity:1;transform:none}
+
+/* ═══════════════════════════════
+   SECONDARY NAV
+   ═══════════════════════════════ */
+.snav{
+  background:var(--dark);height:40px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--L);position:sticky;top:0;z-index:200;
+}
+.snav-l{display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:12px;font-weight:400;color:rgba(255,255,255,.55)}
+.snav-l b{color:rgba(255,255,255,.7);font-weight:600}
+.snav-l-cta{
+  font-size:11px;font-weight:600;color:rgba(255,255,255,.65);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  padding:2px 9px;border-radius:4px;cursor:pointer;transition:background 180ms;
+}
+.snav-l-cta:hover{background:rgba(255,255,255,.14)}
+.snav-r{display:flex;align-items:center;gap:24px}
+.snav-r a{
+  font-size:12px;font-weight:500;color:rgba(255,255,255,.4);
+  display:flex;align-items:center;gap:4px;transition:color 180ms;
+}
+.snav-r a:hover{color:rgba(255,255,255,.75)}
+.snav-r svg{width:8px;height:5px;opacity:.6}
+.snav-r .user-icon{width:13px;height:13px;opacity:.5}
+
+/* ═══════════════════════════════
+   TOP NAV
+   ═══════════════════════════════ */
+.tnav{
+  background:var(--warm-card);
+  height:60px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--L);
+  position:sticky;top:40px;z-index:199;
+  border-bottom:1px solid rgba(0,0,0,.07);
+  box-shadow:0 1px 0 rgba(0,0,0,.04);
+}
+/* Real logo from Figma */
+.tnav-logo{
+  display:flex;align-items:center;gap:5px;cursor:pointer;
+  height:24px;
+}
+.tnav-logo-mark{width:15px;height:20px;object-fit:contain}
+.tnav-logo-text{width:137px;height:11px;object-fit:contain}
+.tnav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.tnav-links a{
+  font-size:14px;font-weight:600;color:var(--mid);
+  padding:7px 14px;border-radius:6px;
+  display:flex;align-items:center;gap:4px;
+  transition:color 150ms,background 150ms;
+}
+.tnav-links a:hover{color:var(--body);background:rgba(0,0,0,.04)}
+.tnav-links svg{width:10px;height:6px;opacity:.5}
+/* Search — pill shape matching Figma */
+.tnav-search{
+  display:flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:600;color:var(--mid);
+  background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.08);
+  padding:7px 18px 7px 12px;border-radius:20px;cursor:pointer;transition:all 150ms;
+}
+.tnav-search:hover{background:rgba(0,0,0,.07);color:var(--body)}
+.tnav-search svg{width:14px;height:14px}
+.btn-demo{
+  font-family:var(--sans);font-size:14px;font-weight:700;
+  color:#fff;background:var(--red);border:none;
+  padding:10px 24px;border-radius:8px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;letter-spacing:.1px;
+  transition:background 180ms;
+}
+.btn-demo:hover{background:#8f0010}
+
+/* ═══════════════════════════════
+   HERO
+   ═══════════════════════════════ */
+.hero{
+  background:#0d0c0d;
+  padding:80px var(--L) 72px;
+  position:relative;overflow:hidden;
+}
+/* Exact gradient from Figma: right side fades to warm grey */
+.hero::after{
+  content:'';position:absolute;
+  top:0;right:0;bottom:0;width:52%;
+  background:linear-gradient(to right,
+    rgba(13,12,13,0) 0%,
+    rgba(15,14,14,.4) 30%,
+    rgba(220,210,200,.45) 70%,
+    rgba(235,225,215,.75) 100%
+  );
+  pointer-events:none;z-index:0;
+}
+.hero-inner{max-width:var(--W);margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:18px;
+}
+.hero-h1{
+  font-family:var(--serif);font-size:52px;font-weight:400;
+  color:rgba(255,255,255,.95);
+  line-height:1.15;letter-spacing:-.5px;
+  margin-bottom:22px;max-width:640px;
+}
+.hero-sub{
+  font-size:16px;font-weight:400;color:rgba(255,255,255,.5);
+  line-height:1.7;max-width:560px;margin-bottom:36px;
+}
+.hero-btn{
+  font-family:var(--sans);font-size:15px;font-weight:700;
+  color:#fff;background:var(--red);border:none;
+  padding:15px 32px;border-radius:8px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;
+  letter-spacing:.1px;transition:background 200ms;
+}
+.hero-btn:hover{background:#8f0010}
+.hero-btn svg{transition:transform 300ms}
+.hero-btn:hover svg{transform:translateX(4px)}
+/* Brand logos strip */
+.hero-divider{height:1px;background:rgba(255,255,255,.1);margin:40px 0 28px}
+.hero-trust-lbl{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.25);margin-bottom:22px;
+}
+.hero-logos-strip{
+  position:relative;overflow:hidden;
+  /* Fade gradients on left and right, matching Figma */
+}
+.hero-logos-strip::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:80px;z-index:2;
+  background:linear-gradient(to right,#0c0c0c,transparent);
+}
+.hero-logos-strip::after{
+  content:'';position:absolute;right:0;top:0;bottom:0;width:80px;z-index:2;
+  background:linear-gradient(to left,rgba(13,12,13,.8),transparent);
+}
+.hero-logos-row{
+  display:flex;align-items:center;gap:52px;
+}
+.hero-logo-img{height:39px;width:120px;object-fit:contain;filter:brightness(0) invert(1);opacity:.75}
+
+/* ═══════════════════════════════
+   SHARED SECTION STYLES
+   ═══════════════════════════════ */
+.sec{padding:60px var(--L)}
+.sec-in{max-width:var(--W);margin:0 auto}
+.bg-w{background:#fff}
+.bg-warm{background:var(--warm)}
+.bg-nearw{background:#fafaf9}
+
+.eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(0,0,0,.35);display:block;margin-bottom:12px;
+}
+.eyebrow-dk{color:rgba(255,255,255,.35)}
+
+/* Section h2 headings — Noto Serif, matching Figma sizes */
+.sh-xl{/* 40px — why ken, best alternative, trusted heading */
+  font-family:var(--serif);font-size:40px;font-weight:400;
+  color:var(--body);line-height:1.2;letter-spacing:-.3px;margin-bottom:18px;
+}
+.sh-lg{/* 30px — Ken Survey heading (multi-line) */
+  font-family:var(--serif);font-size:30px;font-weight:400;
+  color:var(--body);line-height:1.25;letter-spacing:-.2px;margin-bottom:14px;
+}
+.sh-md{/* 24px — "Hear it directly" */
+  font-family:var(--serif);font-size:28px;font-weight:400;
+  color:var(--body);line-height:1.25;letter-spacing:-.2px;margin-bottom:14px;
+}
+.sbody{font-size:16px;font-weight:400;color:var(--mid);line-height:1.75}
+.divider{height:1px;background:rgba(0,0,0,.08);margin:40px 0}
+
+/* ═══════════════════════════════
+   COMPARISON TABLE
+   ═══════════════════════════════ */
+.comp-lbl{
+  font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+  color:rgba(0,0,0,.3);margin-bottom:14px;display:block;
+}
+.comp-wrap{
+  border:1px solid rgba(0,0,0,.09);border-radius:6px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
+.ct colgroup col:nth-child(1){width:240px}
+.ct colgroup col:nth-child(2){width:auto}
+.ct colgroup col:nth-child(3){width:auto}
+.ct th{
+  padding:18px 22px;
+  font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;
+  text-align:left;
+}
+.ct .th-c{background:var(--body);color:rgba(255,255,255,.65)}
+.ct .th-k{background:var(--red-table);color:#fff}
+.ct .th-f{background:var(--body);color:rgba(255,255,255,.65)}
+.ct tbody tr{border-top:1px solid rgba(0,0,0,.05);transition:background 150ms}
+.ct tbody tr:first-child{border-top:none}
+.ct tbody tr:hover{background:rgba(0,0,0,.012)}
+.ct td{padding:18px 22px;font-size:14px;line-height:1.6;vertical-align:top}
+.td-c{font-size:13px;font-weight:500;color:var(--body);background:rgba(0,0,0,.015)}
+.td-k{color:var(--body)}
+.td-f{color:var(--mid)}
+
+/* ═══════════════════════════════
+   STRENGTH CARDS
+   ═══════════════════════════════ */
+.str-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+.str-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.07);
+  border-left:2px solid rgba(0,0,0,.12);
+  border-radius:4px;
+  padding:28px 28px 32px;
+}
+.str-title{
+  font-family:var(--serif);font-size:22px;font-weight:400;
+  color:var(--body);margin-bottom:16px;line-height:1.3;
+}
+.str-body{font-size:14px;color:var(--mid);line-height:1.75}
+
+/* ═══════════════════════════════
+   PLATFORM CARDS
+   ═══════════════════════════════ */
+.plat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+.plat-card{
+  background:#fff;border:1px solid rgba(0,0,0,.07);
+  border-radius:6px;padding:28px;
+}
+.plat-lbl{
+  font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;
+  color:rgba(0,0,0,.35);margin-bottom:14px;display:block;
+}
+.plat-div{height:1px;background:rgba(0,0,0,.07);margin-bottom:14px}
+.plat-title{
+  font-family:var(--serif);font-size:22px;font-weight:500;
+  color:var(--body);margin-bottom:14px;line-height:1.3;
+}
+.plat-body{font-size:14px;color:var(--mid);line-height:1.75}
+
+/* Survey dashboard */
+.dash-wrap{
+  margin-top:32px;
+  border:1px solid rgba(0,0,0,.08);border-radius:6px;overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.dash-bar{
+  background:#fff;border-bottom:1px solid rgba(0,0,0,.07);
+  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+}
+.dash-logo-row{display:flex;align-items:center;gap:8px}
+.dash-k{
+  width:22px;height:22px;background:var(--red);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:13px;font-weight:700;color:#fff;
+}
+.dash-brand{font-size:13px;font-weight:700;color:var(--body);letter-spacing:.5px}
+.dash-h{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--body)}
+.dash-auth{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mid)}
+.dash-av{width:24px;height:24px;border-radius:50%;background:#ede9ff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#806ce0}
+.dash-body{display:grid;grid-template-columns:180px 1fr;min-height:380px}
+.dash-side{border-right:1px solid rgba(0,0,0,.07);padding:16px;background:#fafaf9}
+.dash-fl{font-size:10px;font-weight:600;color:rgba(0,0,0,.35);letter-spacing:.5px;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.dash-sel{
+  width:100%;padding:7px 10px;font-size:12px;color:var(--body);
+  border:1px solid rgba(0,0,0,.1);border-radius:5px;
+  background:#fff;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:space-between;cursor:pointer;
+  font-family:var(--sans);
+}
+.dash-sel span{color:rgba(0,0,0,.4);font-size:10px}
+.dash-main{padding:16px 20px;overflow:hidden}
+.m-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.m-card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:5px;padding:10px 12px}
+.m-card-lbl{font-size:9px;color:var(--mid);margin-bottom:3px;line-height:1.3}
+.m-card-val{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--body);display:flex;align-items:baseline;gap:5px}
+.up{font-size:9px;font-weight:700;color:#059669;background:rgba(5,150,105,.08);padding:1px 4px;border-radius:3px}
+.dn{font-size:9px;font-weight:700;color:#dc2626;background:rgba(220,38,38,.08);padding:1px 4px;border-radius:3px}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ch{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:5px;padding:12px}
+.ch-t{font-size:10px;font-weight:600;color:var(--body);margin-bottom:8px}
+.bar-r{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.bar-lbl{width:68px;font-size:9px;color:var(--mid);text-align:right;flex-shrink:0}
+.bar-tr{flex:1;height:5px;background:rgba(0,0,0,.05);border-radius:3px;overflow:hidden}
+.bar-f{height:100%;background:#806ce0;border-radius:3px}
+.bar-pct{width:24px;font-size:9px;color:rgba(0,0,0,.4)}
+.pie-wr{display:flex;align-items:center;gap:14px}
+.pie{width:64px;height:64px;border-radius:50%;background:conic-gradient(#806ce0 0deg 252deg,#c4bef7 252deg 288deg,#e5e5e5 288deg 360deg);flex-shrink:0}
+.pie-leg{font-size:9px;color:var(--mid);line-height:1.8}
+.pie-d{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px;vertical-align:middle}
+.dash-cap{text-align:center;padding:10px;font-size:12px;color:rgba(0,0,0,.3);border-top:1px solid rgba(0,0,0,.05);background:var(--warm)}
+
+/* ═══════════════════════════════
+   TRUSTED STATS
+   ═══════════════════════════════ */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:32px}
+.stat-cell{padding-right:20px;position:relative}
+.stat-cell::after{content:'';position:absolute;right:0;top:0;height:40px;width:1px;background:rgba(0,0,0,.1)}
+.stat-cell:last-child::after{display:none}
+.stat-num{
+  font-family:var(--serif);font-size:40px;font-weight:400;
+  color:var(--body);line-height:1;margin-bottom:8px;
+}
+.stat-lbl{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(0,0,0,.38);line-height:1.5}
+
+/* Logo marquee */
+.mq{overflow:hidden;position:relative}
+.mq::before{content:'';position:absolute;left:0;top:0;bottom:0;z-index:2;width:80px;background:linear-gradient(to right,var(--warm),transparent)}
+.mq::after{content:'';position:absolute;right:0;top:0;bottom:0;z-index:2;width:80px;background:linear-gradient(to left,var(--warm),transparent)}
+.mq-track{display:flex;align-items:center;gap:60px;width:max-content;animation:mq 32s linear infinite;padding:14px 0}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* Placeholder logos - styled SVG icons to match Figma "logoipsum" style */
+.logo-ph{display:flex;align-items:center;height:30px;opacity:.45}
+.logo-ph img{height:100%;max-width:130px;object-fit:contain}
+
+/* ═══════════════════════════════
+   TESTIMONIAL
+   ═══════════════════════════════ */
+.testi-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.09);border-radius:10px;
+  padding:48px 52px 48px;
+  box-shadow:0 2px 16px rgba(0,0,0,.05);
+  margin:44px 50px 0;
+}
+.testi-rule{width:96px;height:1px;background:rgba(0,0,0,.15);margin-bottom:48px}
+.testi-q{
+  font-family:var(--serif);font-size:26px;font-weight:400;
+  color:var(--body);line-height:1.6;margin-bottom:40px;
+}
+.testi-meta{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.testi-auth{font-size:14px;font-weight:600;color:var(--body)}
+.testi-stars{display:flex;align-items:center;gap:8px;font-size:16px;color:var(--body);letter-spacing:1px}
+.testi-score{font-size:14px;font-weight:600;color:rgba(0,0,0,.4)}
+
+/* ═══════════════════════════════
+   GET STARTED
+   ═══════════════════════════════ */
+.gs{background:var(--warm);padding:64px var(--L);text-align:center;border-top:2px solid rgba(186,0,19,.12)}
+.gs-h{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--body);margin-bottom:10px}
+.gs-sub{font-size:16px;color:var(--mid);margin-bottom:36px}
+.btn-gs{
+  font-family:var(--sans);font-size:15px;font-weight:700;
+  color:#fff;background:var(--red);border:none;
+  padding:16px 40px;border-radius:8px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:background 200ms;letter-spacing:.1px;
+}
+.btn-gs:hover{background:#8f0010}
+
+/* ═══════════════════════════════
+   RESOURCES
+   ═══════════════════════════════ */
+.res-sec{background:#0f0e10;padding:72px var(--L)}
+.res-in{max-width:968px;margin:0 auto}
+.res-ey{font-size:14px;font-weight:700;color:rgba(255,255,255,.4);margin-bottom:6px}
+.res-h{
+  font-family:var(--serif);font-size:40px;font-weight:400;
+  color:rgba(255,255,255,.92);margin-bottom:10px;letter-spacing:-.3px;
+}
+.res-sub{font-size:16px;color:rgba(255,255,255,.38);max-width:680px;line-height:1.6;margin-bottom:48px}
+
+/* 3-col masonry */
+.masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:start}
+.mc{display:flex;flex-direction:column;gap:10px}
+.mc:nth-child(2){margin-top:48px}
+
+/* Resource card — no background/border, content floats on dark bg */
+.rc{cursor:pointer;border-radius:2.5px;overflow:hidden;transition:opacity 200ms}
+.rc:hover{opacity:.85}
+.rc-img{width:100%;height:213px;object-fit:cover;display:block;border-radius:2.5px}
+.rc-body{padding:16px 0 4px}
+.rc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.rc-cat{
+  font-family:var(--inter);font-size:12.8px;font-weight:500;letter-spacing:1.44px;
+  text-transform:uppercase;color:rgba(255,255,255,.3);
+}
+.rc-date{font-family:var(--inter);font-size:12.8px;color:rgba(255,255,255,.4);margin-bottom:6px}
+.rc-badge{
+  font-size:10px;font-weight:500;letter-spacing:1.3px;text-transform:uppercase;
+  color:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:5px;padding:5px 13px;
+  box-shadow:0 2px 8px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.rc-title{
+  font-family:var(--inter);font-size:16px;font-weight:400;
+  color:#fff;line-height:1.35;letter-spacing:-.71px;
+  margin-bottom:8px;
+}
+.rc-excerpt{
+  font-family:var(--inter);font-size:16px;color:rgba(255,255,255,.5);
+  line-height:1.6;letter-spacing:-.31px;
+}
+.view-all{text-align:center;margin-top:40px}
+.btn-va{
+  font-family:var(--sans);font-size:14px;font-weight:600;
+  color:rgba(255,255,255,.55);background:transparent;
+  border:1px solid rgba(255,255,255,.15);
+  padding:12px 32px;border-radius:8px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all 200ms;
+}
+.btn-va:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.06)}
+
+/* ═══════════════════════════════
+   FOOTER
+   ═══════════════════════════════ */
+.ft{background:#0b0a0c;padding:72px var(--L) 0;position:relative;overflow:hidden}
+.ft-grid{
+  display:grid;grid-template-columns:200px 200px 200px 1fr;gap:48px;
+  padding-bottom:56px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.ft-col-h{font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:18px}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:0}
+.ft-links a{font-size:13px;color:rgba(255,255,255,.3);padding:3px 0;display:block;line-height:1.55;transition:color 180ms}
+.ft-links a:hover{color:rgba(255,255,255,.65)}
+/* Company overview */
+.ft-co{padding:36px 0}
+.ft-co-h{font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px}
+.ft-offices{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.ft-country{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:4px}
+.ft-addr{font-size:12px;color:rgba(255,255,255,.18);line-height:1.65}
+/* Bottom */
+.ft-bot{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;position:relative;z-index:1}
+/* Big "Ken" watermark */
+.ft-ken{
+  font-family:var(--serif);
+  font-size:200px;font-weight:700;
+  color:rgba(255,255,255,.05);
+  line-height:.85;letter-spacing:-6px;
+  user-select:none;pointer-events:none;
+  margin-top:0;
+}
+.ft-right{padding-top:40px}
+.ft-contact{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.ft-ci{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.4)}
+.ft-ci svg{width:16px;height:16px;opacity:.5;flex-shrink:0}
+.ft-nl-l{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:4px}
+.ft-nl-h{font-family:var(--serif);font-size:18px;font-weight:500;color:rgba(255,255,255,.45);margin-bottom:14px}
+.ft-inp-row{display:flex;gap:8px}
+.ft-inp{
+  flex:1;padding:12px 14px;font-size:13px;font-family:var(--sans);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:6px;color:rgba(255,255,255,.7);outline:none;
+  transition:border-color 180ms;
+}
+.ft-inp::placeholder{color:rgba(255,255,255,.25)}
+.ft-inp:focus{border-color:rgba(255,255,255,.25)}
+.btn-sub{
+  font-family:var(--sans);font-size:13px;font-weight:700;
+  color:#fff;background:var(--red);border:none;padding:12px 18px;border-radius:6px;
+  cursor:pointer;display:flex;align-items:center;gap:5px;transition:background 200ms;white-space:nowrap;
+}
+.btn-sub:hover{background:#8f0010}
+.ft-legal{
+  padding:18px 0 20px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  border-top:1px solid rgba(255,255,255,.06);margin-top:8px;position:relative;z-index:1;
+}
+.ft-ll{display:flex;gap:24px}
+.ft-ll a{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.2);transition:color 180ms}
+.ft-ll a:hover{color:rgba(255,255,255,.5)}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.18);letter-spacing:.3px}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){:root{--L:40px;--W:100%}}
+@media(max-width:900px){
+  .str-grid,.plat-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .ft-offices{grid-template-columns:1fr 1fr}
+  .ft-bot{grid-template-columns:1fr}
+  .ft-ken{font-size:120px}
+  .masonry{grid-template-columns:1fr 1fr}
+  .mc:nth-child(2){margin-top:0}
+}
+@media(max-width:600px){
+  .tnav-links,.tnav-search{display:none}
+  .snav-l .snav-report{display:none}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .masonry{grid-template-columns:1fr}
+  .hero-h1{font-size:36px}
+  .sh-xl{font-size:28px}
+  .testi-card{margin:32px 0 0;padding:32px}
+  .testi-q{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<div id="rb"></div>
+
+<!-- ══════════════════════════════════
+     SECONDARY NAV
+     ══════════════════════════════════ -->
+<div class="snav">
+  <div class="snav-l">
+    <b>Latest reports:</b>
+    <span class="snav-report">India Makhana Market Outlook to 2030</span>
+    <span class="snav-l-cta">CTA here ↗</span>
+  </div>
+  <div class="snav-r">
+    <a href="#">Procurement</a>
+    <a href="#">Company <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 3.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+    <a href="#"><svg class="user-icon" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="4" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M1 12c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> Log in</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     TOP NAV
+     ══════════════════════════════════ -->
+<nav class="tnav">
+  <!-- Real Figma logo images -->
+  <div class="tnav-logo">
+    <img class="tnav-logo-mark" src="https://www.figma.com/api/mcp/asset/7a5e5d54-25b6-4542-a70f-38c74aa33226" alt="K"/>
+    <img class="tnav-logo-text" src="https://www.figma.com/api/mcp/asset/5dac215c-9128-48c8-9849-f4a5681baf2e" alt="KEN RESEARCH"/>
+  </div>
+  <ul class="tnav-links">
+    <li><a href="#">Services <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 3.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></li>
+    <li><a href="#">Industries <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 3.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></li>
+    <li><a href="#">Resources <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 3.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:14px">
+    <div class="tnav-search">
+      <svg viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M10 10l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      Search
+    </div>
+    <button class="btn-demo">Schedule a Demo</button>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════
+     HERO
+     ══════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div data-a="up">
+      <div class="hero-eyebrow">COMPARE RESEARCH PARTNERS</div>
+      <h1 class="hero-h1">Ken Research: A Perfect Alternative to Frost &amp;&nbsp;Sullivan.</h1>
+      <p class="hero-sub">From startups to Fortune 1000s, Ken Research delivers consultative depth and execution-ready insights powered by real-time data and market foresight.</p>
+      <button class="hero-btn">
+        Talk to an Analyst
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M10.5 5.25L14.25 9l-3.75 3.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div data-a="up" data-d="2">
+      <div class="hero-divider"></div>
+      <div class="hero-trust-lbl">TRUSTED BY LEADING BRANDS</div>
+      <!-- Real logo images from Figma, 120×39 each with 52px gap -->
+      <div class="hero-logos-strip">
+        <div class="hero-logos-row">
+          <img class="hero-logo-img" src="https://www.figma.com/api/mcp/asset/92483af2-64dc-473c-bed6-260dc33b5196" alt="aramex"/>
+          <img class="hero-logo-img" src="https://www.figma.com/api/mcp/asset/90b4ed1e-fe93-4889-9a48-b30bcea90ca1" alt="BOSCH"/>
+          <img class="hero-logo-img" src="https://www.figma.com/api/mcp/asset/be3005bf-61ca-42e8-8144-93d06995f485" alt="Flipkart"/>
+          <img class="hero-logo-img" src="https://www.figma.com/api/mcp/asset/105aa873-4cf9-423e-860b-96b49be2c7e3" alt="Majid Al Futtaim"/>
+          <img class="hero-logo-img" src="https://www.figma.com/api/mcp/asset/9196e8b1-1079-4ec6-b66c-3099f5cbae54" alt="Partner"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     WHY KEN RESEARCH
+     ══════════════════════════════════ -->
+<section class="sec bg-w">
+  <div class="sec-in">
+    <div data-a="left">
+      <span class="eyebrow">WHY KEN RESEARCH?</span>
+      <h2 class="sh-xl">Why Ken Research?</h2>
+      <p class="sbody" style="max-width:100%">Ken Research stands apart by offering specialized consulting services that cater not only to large enterprises but also to startups, government bodies, and industry associations. Ken Research provides a broad spectrum of services, including commercial due diligence and strategic advice for both brownfield and greenfield projects.</p>
+    </div>
+    <div class="divider" data-a="fade" data-d="1"></div>
+    <span class="comp-lbl" data-a="up" data-d="2">KEN RESEARCH VS FROST &amp; SULLIVAN</span>
+    <div data-a="up" data-d="3">
+      <div class="comp-wrap">
+        <table class="ct">
+          <colgroup><col/><col/><col/></colgroup>
+          <thead><tr>
+            <th class="th-c">CRITERIA</th>
+            <th class="th-k">KEN RESEARCH</th>
+            <th class="th-f">FROST &amp; SULLIVAN</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="td-c">Research Approach</td><td class="td-k">Consultative, decision-oriented research aligned to your specific business question and investment context.</td><td class="td-f">Structured industry research with growth environment frameworks and sector-based analysis.</td></tr>
+            <tr><td class="td-c">Commercial Due Diligence</td><td class="td-k">Advanced analytical methodologies with quantitative market analysis, competitive landscape, and qualitative insights.</td><td class="td-f">Market intelligence reports with standard frameworks across technology and industrial sectors.</td></tr>
+            <tr><td class="td-c">Advisory Scope</td><td class="td-k">Brownfield upgrades and greenfield investments with decision analysis frameworks and feasibility studies.</td><td class="td-f">Strategic growth advisory focused on market opportunity identification and competitive positioning.</td></tr>
+            <tr><td class="td-c">Primary Research</td><td class="td-k">In-house primary research via Ken Survey — unbiased surveys with exhaustive question bank and panel network.</td><td class="td-f">Primary research integrated within standard industry tracking studies and growth radar frameworks.</td></tr>
+            <tr><td class="td-c">Consulting Platform</td><td class="td-k">Ken Connect — comprehensive consulting for M&amp;A advisory, IPO readiness, and go-to-market strategies.</td><td class="td-f">Consulting engagements focused on digital transformation, innovation, and growth strategy.</td></tr>
+            <tr><td class="td-c">Client Coverage</td><td class="td-k">Large enterprises, startups, government bodies, and industry associations across 100+ countries.</td><td class="td-f">Large enterprises and Fortune 500 companies across established global industries.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     CORE STRENGTHS
+     ══════════════════════════════════ -->
+<section class="sec bg-warm" style="padding-top:60px">
+  <div class="sec-in">
+    <div data-a="up">
+      <span class="eyebrow">EXPLORE CORE STRENGTHS OF KEN RESEARCH</span>
+      <h2 class="sh-xl">The best Alternative to Frost and Sullivan</h2>
+      <p class="sbody">Ken Research stands apart by offering specialized consulting services that cater not only to large enterprises but also to startups, government bodies, and industry associations. Ken Research provides a broad spectrum of services, including commercial due diligence and strategic advice for both brownfield and greenfield projects.</p>
+    </div>
+    <div class="str-grid">
+      <div class="str-card" data-a="left" data-d="1">
+        <div class="str-title">Commercial Due Diligence</div>
+        <p class="str-body">Ken Research leverages advanced analytical methodologies and cross-functional industry expertise to conduct thorough commercial due diligence. Our approach integrates quantitative market analysis, competitive landscape assessment, and qualitative insights to empower businesses with a robust understanding of potential investment opportunities and market expansions.</p>
+      </div>
+      <div class="str-card" data-a="right" data-d="1">
+        <div class="str-title">Brownfield vs. Greenfield Strategies</div>
+        <p class="str-body">We provide strategic advisory that supports informed decision-making in the choice between brownfield upgrades and greenfield investments. Utilizing decision analysis frameworks and feasibility studies, we assess operational and financial metrics, regulatory environments, and market readiness. Our strategic guidance is backed by data and forecasting models, we provide comprehensive support tailored to their specific industry dynamics and investment scenarios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     KEN SURVEY & KEN CONNECT
+     ══════════════════════════════════ -->
+<section class="sec bg-w">
+  <div class="sec-in">
+    <div data-a="up">
+      <span class="eyebrow">KEN SURVEY AND KEN CONNECT</span>
+      <h2 class="sh-lg" style="max-width:900px">Ken Research's proprietary platform, Ken Survey and Ken Connect, stands as a cornerstone of our operational excellence.</h2>
+      <p class="sbody">We don't rely on third-party data and collaborations.</p>
+    </div>
+    <div class="plat-grid">
+      <div class="plat-card" data-a="left" data-d="1">
+        <span class="plat-lbl">KEN SURVEY</span>
+        <div class="plat-div"></div>
+        <div class="plat-title">Unbiased Survey Platform</div>
+        <p class="plat-body">Ken Survey offers unbiased survey enabled with an exhaustive question bank and panel network and embedded with Hard and Soft Sample Quota as per Clients' Objective. Our actionable insightful survey dashboard available at a competitive quote makes us an ideal Survey Partner for businesses.</p>
+      </div>
+      <div class="plat-card" data-a="right" data-d="1">
+        <span class="plat-lbl">KEN CONNECT</span>
+        <div class="plat-div"></div>
+        <div class="plat-title">Comprehensive Consulting Platform</div>
+        <p class="plat-body">Ken Connect is a comprehensive consulting platform designed to guide businesses with data-driven strategies and actionable insights. Leveraging expertise in market dynamics, M&amp;A advisory, IPO readiness, and go-to-market strategies, Ken Connect serves as a strategic partner in navigating complex business landscapes.</p>
+      </div>
+    </div>
+    <!-- Survey Dashboard Screenshot -->
+    <div class="dash-wrap" data-a="up" data-d="2">
+      <div class="dash-bar">
+        <div class="dash-logo-row">
+          <div class="dash-k">K</div>
+          <span class="dash-brand">KEN RESEARCH</span>
+        </div>
+        <div class="dash-h">Overview</div>
+        <div class="dash-auth"><div class="dash-av">A</div> Log-out</div>
+      </div>
+      <div class="dash-body">
+        <div class="dash-side">
+          <div class="dash-fl">Clear all Slicers <span style="color:var(--red);cursor:pointer">⊕</span></div>
+          <div class="dash-fl" style="margin-top:12px">Gender</div>
+          <div class="dash-sel"><span>All</span><span>∨</span></div>
+          <div class="dash-fl">Occupation</div>
+          <div class="dash-sel"><span>All</span><span>∨</span></div>
+          <div class="dash-fl">Location</div>
+          <div class="dash-sel"><span>All</span><span>∨</span></div>
+          <div class="dash-fl">Education Level</div>
+          <div class="dash-sel"><span>All</span><span>∨</span></div>
+        </div>
+        <div class="dash-main">
+          <div class="m-cards">
+            <div class="m-card"><div class="m-card-lbl">Ad Effectiveness Score</div><div class="m-card-val">3.05 <span class="up">↑ 8.4%</span></div></div>
+            <div class="m-card"><div class="m-card-lbl">Brand satisfaction score</div><div class="m-card-val">3.21 <span class="up">↑ 10.0%</span></div></div>
+            <div class="m-card"><div class="m-card-lbl">Customer Service Score</div><div class="m-card-val">2.80 <span class="dn">↓ 2.35%</span></div></div>
+            <div class="m-card"><div class="m-card-lbl">Brand NPS Score</div><div class="m-card-val">6.00 <span class="up">↑ 5.9%</span></div></div>
+          </div>
+          <div class="chart-row">
+            <div class="ch">
+              <div class="ch-t">Source of Brand Awareness</div>
+              <div class="bar-r"><span class="bar-lbl">Friend</span><div class="bar-tr"><div class="bar-f" style="width:75%"></div></div><span class="bar-pct">15%</span></div>
+              <div class="bar-r"><span class="bar-lbl">Word of mouth</span><div class="bar-tr"><div class="bar-f" style="width:65%;background:#a59ce8"></div></div><span class="bar-pct">13%</span></div>
+              <div class="bar-r"><span class="bar-lbl">Family</span><div class="bar-tr"><div class="bar-f" style="width:60%;background:#c4bef7"></div></div><span class="bar-pct">12%</span></div>
+              <div class="bar-r"><span class="bar-lbl">Social Media</span><div class="bar-tr"><div class="bar-f" style="width:60%;background:#c4bef7"></div></div><span class="bar-pct">12%</span></div>
+              <div class="bar-r"><span class="bar-lbl">Search Engine</span><div class="bar-tr"><div class="bar-f" style="width:50%;background:#dfdcfb"></div></div><span class="bar-pct">10%</span></div>
+            </div>
+            <div class="ch">
+              <div class="ch-t">Logo Recall</div>
+              <div class="pie-wr">
+                <div class="pie"></div>
+                <div class="pie-leg">
+                  <div><span class="pie-d" style="background:#806ce0"></span>Yes</div>
+                  <div><span class="pie-d" style="background:#c4bef7"></span>No</div>
+                  <div><span class="pie-d" style="background:#e5e5e5"></span>Not Sure</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-cap">Survey Page By Ken Research</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     TRUSTED BY THE BEST
+     ══════════════════════════════════ -->
+<section class="sec bg-warm" style="padding-top:56px;padding-bottom:56px">
+  <div class="sec-in">
+    <div data-a="up">
+      <span class="eyebrow">TRUSTED BY THE BEST</span>
+      <h2 class="sh-xl" style="font-size:36px">Ken Research Can Help You Grow Faster</h2>
+    </div>
+    <div class="divider" data-a="fade" data-d="1"></div>
+    <div class="stat-row">
+      <div class="stat-cell" data-a="up" data-d="1"><div class="stat-num">70%</div><div class="stat-lbl">OF OUR CLIENTS ARE FORTUNE 2000S</div></div>
+      <div class="stat-cell" data-a="up" data-d="2"><div class="stat-num">17 out of 20</div><div class="stat-lbl">CONSULTING FIRMS ENGAGE WITH US</div></div>
+      <div class="stat-cell" data-a="up" data-d="3"><div class="stat-num">#8</div><div class="stat-lbl">LEADING GOVERNMENT ASSOCIATIONS SERVED</div></div>
+      <div class="stat-cell" data-a="up" data-d="4"><div class="stat-num">70</div><div class="stat-lbl">CLIENT NPS</div></div>
+    </div>
+    <div class="divider" data-a="fade" data-d="5"></div>
+    <!-- Logo marquee with same logoipsum SVGs as Figma -->
+    <div class="mq" data-a="fade" data-d="6">
+      <div class="mq-track">
+        <!-- First set of 5 logos -->
+        <div class="logo-ph"><svg height="28" viewBox="0 0 82 28"><rect x="0" y="4" width="16" height="20" rx="2" fill="#555"/><rect x="20" y="8" width="8" height="12" rx="1" fill="#555"/><path d="M34 14h24M34 10h18M34 18h21" stroke="#555" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="logo-ph"><svg height="28" viewBox="0 0 120 28"><circle cx="12" cy="14" r="10" fill="none" stroke="#555" stroke-width="2"/><circle cx="12" cy="14" r="5" fill="none" stroke="#555" stroke-width="1.5"/><text x="28" y="19" font-family="Arial" font-size="13" font-weight="900" fill="#555" letter-spacing="1">logoipsum</text><text x="110" y="19" font-family="Arial" font-size="13" fill="#555">·</text></svg></div>
+        <div class="logo-ph"><svg height="28" viewBox="0 0 130 28"><rect x="0" y="6" width="4" height="16" rx="1" fill="#555"/><rect x="6" y="6" width="4" height="16" rx="1" fill="#555"/><rect x="12" y="3" width="4" height="22" rx="1" fill="#555"/><text x="24" y="20" font-family="Arial" font-size="12" font-weight="700" fill="#555" letter-spacing="2">LOGOIPSUM</text></svg></div>
+        <div class="logo-ph"><svg height="28" viewBox="0 0 115 28"><circle cx="8" cy="14" r="5" fill="#555" opacity=".35"/><circle cx="18" cy="14" r="5" fill="#555" opacity=".65"/><circle cx="28" cy="14" r="5" fill="#555"/><text x="40" y="19" font-family="Arial" font-size="13" font-weight="700" fill="#555">logoipsum·</text></svg></div>
+        <div class="logo-ph"><svg height="28" viewBox="0 0 90 28"><path d="M5 14 Q22 4 39 14 Q56 24 73 14" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M5 19 Q22 9 39 19 Q56 29 73 19" stroke="#555" stroke-width="2" opacity=".35" fill="none" stroke-linecap="round"/></svg></div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="logo-ph"><svg height="28" viewBox="0 0 82 28"><rect x="0" y="4" width="16" height="20" rx="2" fill="#555"/><rect x="20" y="8" width="8" height="12" rx="1" fill="#555"/><path d="M34 14h24M34 10h18M34 18h21" stroke="#555" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="logo-ph"><svg height="28" viewBox="0 0 120 28"><circle cx="12" cy="14" r="10" fill="none" stroke="#555" stroke-width="2"/><circle cx="12" cy="14" r="5" fill="none" stroke="#555" stroke-width="1.5"/><text x="28" y="19" font-family="Arial" font-size="13" font-weight="900" fill="#555" letter-spacing="1">logoipsum</text><text x="110" y="19" font-family="Arial" font-size="13" fill="#555">·</text></svg></div>
+        <div class="logo-ph"><svg height="28" viewBox="0 0 130 28"><rect x="0" y="6" width="4" height="16" rx="1" fill="#555"/><rect x="6" y="6" width="4" height="16" rx="1" fill="#555"/><rect x="12" y="3" width="4" height="22" rx="1" fill="#555"/><text x="24" y="20" font-family="Arial" font-size="12" font-weight="700" fill="#555" letter-spacing="2">LOGOIPSUM</text></svg></div>
+        <div class="logo-ph"><svg height="28" viewBox="0 0 115 28"><circle cx="8" cy="14" r="5" fill="#555" opacity=".35"/><circle cx="18" cy="14" r="5" fill="#555" opacity=".65"/><circle cx="28" cy="14" r="5" fill="#555"/><text x="40" y="19" font-family="Arial" font-size="13" font-weight="700" fill="#555">logoipsum·</text></svg></div>
+        <div class="logo-ph"><svg height="28" viewBox="0 0 90 28"><path d="M5 14 Q22 4 39 14 Q56 24 73 14" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M5 19 Q22 9 39 19 Q56 29 73 19" stroke="#555" stroke-width="2" opacity=".35" fill="none" stroke-linecap="round"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     TESTIMONIAL
+     ══════════════════════════════════ -->
+<section class="sec bg-w" style="border-top:1px solid rgba(0,0,0,.06)">
+  <div class="sec-in">
+    <div data-a="up">
+      <span class="eyebrow">HEAR IT DIRECTLY FROM OUR CLIENTS</span>
+      <h2 class="sh-md">Hear it directly from our clients.</h2>
+    </div>
+    <div class="testi-card" data-a="scale" data-d="1">
+      <div class="testi-rule"></div>
+      <p class="testi-q">"Ken Research helped us quantify our addressable opportunity, build a sharper product strategy, and clearly articulate our competitive strengths. Their analysis played a key role in our next-stage discussions with investors."</p>
+      <div class="testi-meta">
+        <div class="testi-auth">Director, Yash Highvoltage Insulators</div>
+        <div class="testi-stars">★★★★★ <span class="testi-score">4.97 / 5</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     GET STARTED
+     ══════════════════════════════════ -->
+<section class="gs">
+  <div data-a="up">
+    <div class="gs-h">Get started</div>
+    <p class="gs-sub">Contact us for tailored solutions.</p>
+    <button class="btn-gs">Talk to an Analyst ↗</button>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     RESOURCES — Real Figma images
+     ══════════════════════════════════ -->
+<section class="res-sec">
+  <div class="res-in">
+    <div data-a="up">
+      <div class="res-ey">Related Resources</div>
+      <h2 class="res-h">Industry Insights &amp; Resources</h2>
+      <p class="res-sub">Expert perspectives and thought leadership on market intelligence, consulting strategy, and business growth.</p>
+    </div>
+
+    <div class="masonry">
+      <!-- COLUMN 1 -->
+      <div class="mc">
+        <div class="rc" data-a="up" data-d="1">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/4e25918b-9cea-4b04-8cdb-d247179bb21d" alt="AI Supply Chain"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">TECHNOLOGY</span><span class="rc-badge">Featured</span></div>
+            <div class="rc-date">Jan 15, '24</div>
+            <div class="rc-title">The Future of AI in Supply Chain Management</div>
+            <div class="rc-excerpt">Exploring how artificial intelligence is revolutionizing logistics operations and predictive analytics.</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="2">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/cd062e82-9bef-42f5-beba-84b4a29911d4" alt="Sustainable Transportation"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">SUSTAINABILITY</span><span class="rc-badge">Featured</span></div>
+            <div class="rc-title">Sustainable Transportation Solutions</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="3">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/f7eb746b-5204-41d4-ae85-105f78196e78" alt="Industry 4.0"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">MANUFACTURING</span><span class="rc-badge">Latest</span></div>
+            <div class="rc-title">Industry 4.0 and Smart Manufacturing</div>
+            <div class="rc-excerpt">Integrating IoT and machine learning into production and distribution processes.</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="4">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/af88e26c-97fe-4abb-9fb5-02b6b63c96c3" alt="Cybersecurity"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">SECURITY</span><span class="rc-badge">Featured</span></div>
+            <div class="rc-title">Cybersecurity in Connected Supply Chains</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMN 2 — offset top 48px -->
+      <div class="mc">
+        <div class="rc" data-a="up" data-d="1">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/e6dafcee-87e5-4b1b-a388-f6637911b417" alt="Digital Transformation"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">STRATEGY</span></div>
+            <div class="rc-date">Jan 8, '24</div>
+            <div class="rc-title">Digital Transformation in Logistics</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="2">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/b946cee3-5d83-4dc3-9dc9-869bb4ea6ea3" alt="Last Mile"/>
+          <div class="rc-body">
+            <div class="rc-title">Optimizing Last-Mile Delivery</div>
+            <div class="rc-excerpt">Innovative approaches to solving the most expensive part of the delivery chain.</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="3">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/467a44e9-0c79-4a9f-a034-cc2c2a5dd022" alt="Resilient Supply Chains"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">INSIGHTS</span></div>
+            <div class="rc-date">Jan 12, '24</div>
+            <div class="rc-title">Building Resilient Supply Chains in 2024</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="4">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/021d24e2-4678-49c9-ae11-8a6c33d877c6" alt="Blockchain"/>
+          <div class="rc-body">
+            <div class="rc-title">Blockchain for Supply Chain Transparency</div>
+            <div class="rc-excerpt">Exploring distributed ledger technology for end-to-end traceability and trust.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMN 3 -->
+      <div class="mc">
+        <div class="rc" data-a="up" data-d="1">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/caf6f5c6-6664-493b-accf-fc1e0cf8495b" alt="Warehouse Automation"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">AUTOMATION</span></div>
+            <div class="rc-date">Jan 10, '24</div>
+            <div class="rc-title">Warehouse Automation: ROI and Implementation</div>
+            <div class="rc-excerpt">A comprehensive guide to implementing robotic systems and measuring their impact on operations.</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="2">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/702995b1-0ad0-4c45-bab2-dbf3a8a5ae81" alt="Data Driven"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">ANALYTICS</span><span class="rc-badge">Featured</span></div>
+            <div class="rc-title">Data-Driven Decision Making in Supply Chain</div>
+            <div class="rc-excerpt">Leveraging real-time analytics and business intelligence for competitive advantage.</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="3">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/c4b96713-db59-4a5e-9848-1f9a2bd39795" alt="International Logistics"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">GLOBAL TRADE</span></div>
+            <div class="rc-date">Jan 6, '24</div>
+            <div class="rc-title">Navigating International Logistics Challenges</div>
+            <div class="rc-excerpt">Managing cross-border complexities and regulatory requirements in global supply chains.</div>
+          </div>
+        </div>
+        <div class="rc" data-a="up" data-d="4">
+          <img class="rc-img" src="https://www.figma.com/api/mcp/asset/7c4278b6-a7d6-4d8c-b65a-8f6d9b290811" alt="Leadership"/>
+          <div class="rc-body">
+            <div class="rc-meta"><span class="rc-cat">LEADERSHIP</span></div>
+            <div class="rc-date">Dec 28, '23</div>
+            <div class="rc-title">Building High-Performance Logistics Teams</div>
+            <div class="rc-excerpt">Best practices for recruiting, training, and retaining top talent in the logistics industry.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-all" data-a="up">
+      <button class="btn-va">View All Resources <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     FOOTER
+     ══════════════════════════════════ -->
+<footer class="ft">
+  <div class="ft-grid">
+    <div data-a="up" data-d="1">
+      <div class="ft-col-h">ABOUT KEN RESEARCH</div>
+      <ul class="ft-links">
+        <li><a href="#">Home</a></li><li><a href="#">About US</a></li><li><a href="#">Services</a></li>
+        <li><a href="#">Categories</a></li><li><a href="#">News</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact US</a></li>
+      </ul>
+    </div>
+    <div data-a="up" data-d="2">
+      <div class="ft-col-h">RESOURCES</div>
+      <ul class="ft-links">
+        <li><a href="#">Blog</a></li><li><a href="#">Industry Reports</a></li><li><a href="#">Company Research Report</a></li>
+        <li><a href="#">Country Research Reports</a></li><li><a href="#">Bundle Reports</a></li>
+        <li><a href="#">Dossier 360</a></li><li><a href="#">Publishers</a></li>
+        <li><a href="#">Go To Market Strategy</a></li><li><a href="#">Paid Press Release</a></li>
+      </ul>
+    </div>
+    <div data-a="up" data-d="3">
+      <div class="ft-col-h">EXPERTISE &amp; SERVICES</div>
+      <ul class="ft-links">
+        <li><a href="#">Industry Speak</a></li><li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li><li><a href="#">Disclaimer</a></li>
+        <li><a href="#">FAQ's</a></li><li><a href="#">Site Map</a></li><li><a href="#">IT Support</a></li>
+      </ul>
+    </div>
+    <div data-a="up" data-d="4">
+      <div class="ft-col-h">EXPERTISE &amp; SERVICES</div>
+      <ul class="ft-links">
+        <li><a href="#">Ken Research vs Markets and Markets</a></li>
+        <li><a href="#">Ken Research vs Mordor Intelligence</a></li>
+        <li><a href="#">Ken Research vs S&amp;P Global Market Intelligence</a></li>
+        <li><a href="#">Ken Research vs Grand View Research</a></li>
+        <li><a href="#">Ken Research vs GlobalData</a></li>
+        <li><a href="#">Ken Research vs Statista</a></li>
+        <li><a href="#" style="color:rgba(255,255,255,.5)">Ken Research vs Frost &amp; Sullivan</a></li>
+        <li><a href="#">Ken Research vs Euromonitor International</a></li>
+        <li><a href="#">Ken Research vs BCC Research</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Company Overview -->
+  <div class="ft-co" data-a="up">
+    <div class="ft-co-h">COMPANY OVERVIEW</div>
+    <div class="ft-offices">
+      <div class="office"><div class="ft-country">INDIA</div><div class="ft-addr">Unit 14, Tower B3, Spaze I Tech Business Park, Sohna Road, sector 49 Gurgaon, Haryana - 122001, India</div></div>
+      <div class="office"><div class="ft-country">UAE</div><div class="ft-addr">105, Al Jaz1b, Street no 2 the Greens Dubai United Arab Emirates.</div></div>
+      <div class="office"><div class="ft-country">INDONESIA</div><div class="ft-addr">The Icon BSD City, Jl. Verdant View IIIA No.15, Tangerang Regency, Province Banten-15345, Indonesia</div></div>
+      <div class="office"><div class="ft-country">QATAR</div><div class="ft-addr">Office no. 9, Building no. 171 Zone no. 42, Street no. 230, Al-Rehab Complex, C-Ring road, Doha</div></div>
+    </div>
+  </div>
+
+  <!-- Bottom: Ken watermark + right col -->
+  <div class="ft-bot">
+    <div class="ft-ken" data-a="left">Ken</div>
+    <div class="ft-right" data-a="right">
+      <div class="ft-contact">
+        <div class="ft-ci">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M14 10.67c-1.23 0-2.42-.2-3.53-.55a1 1 0 00-1.01.24L7.93 11.9a10.8 10.8 0 01-4.83-4.83l1.54-1.53c.27-.27.35-.66.24-1A11.42 11.42 0 014.33 1 1 1 0 003.33 0H1A1 1 0 000 1C0 9.28 6.72 16 15 16a1 1 0 001-1v-3.33a1 1 0 00-2 0z" fill="currentColor" opacity=".5"/></svg>
+          For Sale Enquiries: +91-74283 45777
+        </div>
+        <div class="ft-ci">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M2 2h12a1 1 0 011 1v10a1 1 0 01-1 1H2a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.2" opacity=".5"/><path d="M1 4l7 5 7-5" stroke="currentColor" stroke-width="1.2" opacity=".5"/></svg>
+          support@kenresearch.com
+        </div>
+      </div>
+      <div class="ft-nl-l">SUBSCRIBE TO OUR NEWSLETTER</div>
+      <div class="ft-nl-h">Never Miss out on a update from us</div>
+      <div class="ft-inp-row">
+        <input class="ft-inp" type="email" placeholder="Enter Your Email Address"/>
+        <button class="btn-sub">Subscribe ↗</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal row -->
+  <div class="ft-legal">
+    <div class="ft-ll">
+      <a href="#">TERMS &amp; CONDITIONS</a>
+      <a href="#">PRIVACY POLICY</a>
+      <a href="#">COOKIE POLICY</a>
+    </div>
+    <div class="ft-copy">© COPYRIGHT 2024, KEN RESEARCH PVT. LTD. ALL RIGHTS RESERVED.</div>
+  </div>
+</footer>
+
+<script>
+/* Reading bar */
+const rb=document.getElementById('rb');
+window.addEventListener('scroll',()=>{
+  const t=document.documentElement.scrollHeight-window.innerHeight;
+  rb.style.width=(window.scrollY/t*100)+'%';
+},{passive:true});
+
+/* Scroll animations */
+const els=document.querySelectorAll('[data-a]');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}
+  });
+},{threshold:0.07,rootMargin:'0px 0px -24px 0px'});
+els.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
