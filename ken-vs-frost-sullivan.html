@@ -131,81 +131,132 @@ img{display:block}
 .tnav-search:hover{background:rgba(0,0,0,.07);color:var(--body)}
 .tnav-search svg{width:14px;height:14px}
 .btn-demo{
-  font-family:var(--sans);font-size:14px;font-weight:700;
-  color:#fff;background:var(--red);border:none;
-  padding:10px 24px;border-radius:8px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:8px;letter-spacing:.1px;
-  transition:background 180ms;
+  font-family:'DM Sans',var(--sans);font-size:14px;font-weight:500;
+  color:#fff;border:none;
+  height:40px;padding:0 20px;
+  border-radius:5px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;letter-spacing:.0875px;
+  background:linear-gradient(90deg,
+    #b01f24 0%,#c12b30 25%,#eb484e 50%,#c12b30 75%,#b01f24 100%
+  );
+  box-shadow:0 4px 12px rgba(176,31,36,.15);
+  transition:box-shadow 200ms,filter 200ms;
 }
-.btn-demo:hover{background:#8f0010}
+.btn-demo:hover{box-shadow:0 6px 20px rgba(176,31,36,.28);filter:brightness(1.06)}
 
 /* ═══════════════════════════════
-   HERO
+   HERO — exact Figma
    ═══════════════════════════════ */
 .hero{
-  background:#0d0c0d;
+  position:relative;overflow:hidden;
   padding:80px var(--L) 72px;
-  position:relative;overflow:hidden;
+  min-height:552px;
+  /* BI dashboard image on right portion */
+  background-color:#0d0c0d;
 }
-/* Exact gradient from Figma: right side fades to warm grey */
-.hero::after{
-  content:'';position:absolute;
-  top:0;right:0;bottom:0;width:52%;
-  background:linear-gradient(to right,
-    rgba(13,12,13,0) 0%,
-    rgba(15,14,14,.4) 30%,
-    rgba(220,210,200,.45) 70%,
-    rgba(235,225,215,.75) 100%
+/* Uploaded BI dashboard image — right 55% of hero */
+.hero-bg-img{
+  position:absolute;
+  top:0;right:0;bottom:0;
+  width:58%;
+  object-fit:cover;
+  object-position:center center;
+  z-index:0;
+  pointer-events:none;
+}
+/* Dark overlay — left black, fades right revealing image. Exact Figma gradient */
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(
+    to right,
+    #0d0c0d 0%,
+    #0d0c0d 30%,
+    rgba(13,12,13,.92) 42%,
+    rgba(13,12,13,.7) 55%,
+    rgba(13,12,13,.3) 72%,
+    rgba(13,12,13,.0) 100%
   );
-  pointer-events:none;z-index:0;
 }
-.hero-inner{max-width:var(--W);margin:0 auto;position:relative;z-index:1}
+.hero-inner{max-width:var(--W);margin:0 auto;position:relative;z-index:2}
+
+/* Eyebrow — DM Sans Medium 11px tracking 1.98px rgba(255,255,255,0.4) */
 .hero-eyebrow{
-  font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
-  color:rgba(255,255,255,.35);margin-bottom:18px;
+  font-family:'DM Sans',var(--sans);
+  font-size:11px;font-weight:500;
+  letter-spacing:1.98px;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  margin-bottom:16px;
 }
+/* H1 — Noto Serif Light 39px tracking 0.5px white */
 .hero-h1{
-  font-family:var(--serif);font-size:52px;font-weight:400;
-  color:rgba(255,255,255,.95);
-  line-height:1.15;letter-spacing:-.5px;
-  margin-bottom:22px;max-width:640px;
+  font-family:var(--serif);
+  font-size:39px;font-weight:300;
+  color:#fff;
+  line-height:1.2;letter-spacing:.5px;
+  margin-bottom:20px;max-width:700px;
 }
+/* Sub — DM Sans 16px white */
 .hero-sub{
-  font-size:16px;font-weight:400;color:rgba(255,255,255,.5);
-  line-height:1.7;max-width:560px;margin-bottom:36px;
+  font-family:'DM Sans',var(--sans);
+  font-size:16px;font-weight:400;color:#fff;
+  line-height:1.6;max-width:640px;margin-bottom:32px;
 }
+/* CTA button — exact design system gradient button */
 .hero-btn{
-  font-family:var(--sans);font-size:15px;font-weight:700;
-  color:#fff;background:var(--red);border:none;
-  padding:15px 32px;border-radius:8px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:10px;
-  letter-spacing:.1px;transition:background 200ms;
+  font-family:'DM Sans',var(--sans);
+  font-size:16px;font-weight:500;
+  color:#fff;border:none;
+  height:48px;padding:0 28px;
+  border-radius:5px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  letter-spacing:.0875px;
+  /* Exact DS gradient: #b01f24 → #eb484e → #b01f24 */
+  background:linear-gradient(90deg,
+    #b01f24 0%,#b82529 7.14%,#c12b30 14.29%,#c93136 21.43%,
+    #d13738 28.57%,#da3d42 35.71%,#e24248 42.86%,
+    #eb484e 50%,
+    #e24248 57.14%,#da3d42 64.29%,#d13738 71.43%,
+    #c93136 78.57%,#c12b30 85.71%,#b82529 92.86%,#b01f24 100%
+  );
+  box-shadow:0 4px 16px rgba(176,31,36,.15);
+  overflow:hidden;position:relative;
+  transition:box-shadow 200ms,filter 200ms;
 }
-.hero-btn:hover{background:#8f0010}
-.hero-btn svg{transition:transform 300ms}
-.hero-btn:hover svg{transform:translateX(4px)}
+.hero-btn:hover{box-shadow:0 6px 24px rgba(176,31,36,.3);filter:brightness(1.06)}
+.hero-btn .arr{
+  display:inline-flex;align-items:center;
+  transition:transform 300ms cubic-bezier(.4,0,.2,1);
+}
+.hero-btn:hover .arr{transform:translateX(4px)}
 /* Brand logos strip */
-.hero-divider{height:1px;background:rgba(255,255,255,.1);margin:40px 0 28px}
+.hero-divider{height:1px;background:rgba(255,255,255,.12);margin:40px 0 24px}
+/* Trust label — DM Sans Medium 11px tracking 1.5px rgba(255,255,255,0.25) */
 .hero-trust-lbl{
-  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  color:rgba(255,255,255,.25);margin-bottom:22px;
+  font-family:'DM Sans',var(--sans);
+  font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.25);margin-bottom:20px;
 }
-.hero-logos-strip{
-  position:relative;overflow:hidden;
-  /* Fade gradients on left and right, matching Figma */
-}
+.hero-logos-strip{position:relative;overflow:hidden}
+/* Fade masks match Figma — left fades to #0c0c0c, right fades to transparent (image shows through) */
 .hero-logos-strip::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:80px;z-index:2;
-  background:linear-gradient(to right,#0c0c0c,transparent);
+  content:'';position:absolute;left:0;top:0;bottom:0;width:60px;z-index:2;
+  background:linear-gradient(to right,rgba(13,12,13,1),transparent);
 }
 .hero-logos-strip::after{
-  content:'';position:absolute;right:0;top:0;bottom:0;width:80px;z-index:2;
-  background:linear-gradient(to left,rgba(13,12,13,.8),transparent);
+  content:'';position:absolute;right:0;top:0;bottom:0;width:60px;z-index:2;
+  background:linear-gradient(to left,rgba(13,12,13,.6),transparent);
 }
 .hero-logos-row{
   display:flex;align-items:center;gap:52px;
 }
-.hero-logo-img{height:39px;width:120px;object-fit:contain;filter:brightness(0) invert(1);opacity:.75}
+/* Logos: 120w × 39h, inverted to white, 0.75 opacity — exact Figma */
+.hero-logo-img{
+  height:39px;width:120px;
+  object-fit:contain;
+  filter:brightness(0) invert(1);
+  opacity:.75;
+  flex-shrink:0;
+}
 
 /* ═══════════════════════════════
    SHARED SECTION STYLES
@@ -260,7 +311,7 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
 }
 .ct .th-c{background:var(--body);color:rgba(255,255,255,.65)}
 .ct .th-k{background:var(--red-table);color:#fff}
-.ct .th-f{background:var(--body);color:rgba(255,255,255,.65)}
+.ct .th-f{background:#f5f2f1;color:#1b1c1c}
 .ct tbody tr{border-top:1px solid rgba(0,0,0,.05);transition:background 150ms}
 .ct tbody tr:first-child{border-top:none}
 .ct tbody tr:hover{background:rgba(0,0,0,.012)}
@@ -360,15 +411,51 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
 /* ═══════════════════════════════
    TRUSTED STATS
    ═══════════════════════════════ */
-.stat-row{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:32px}
-.stat-cell{padding-right:20px;position:relative}
-.stat-cell::after{content:'';position:absolute;right:0;top:0;height:40px;width:1px;background:rgba(0,0,0,.1)}
-.stat-cell:last-child::after{display:none}
-.stat-num{
-  font-family:var(--serif);font-size:40px;font-weight:400;
-  color:var(--body);line-height:1;margin-bottom:8px;
+/* ── Stats Row — exact Figma flex layout ──────────────────
+   Parent: flex, gap:32px, align-items:center
+   Divider: separate flex child, 1px × 40px, flex-shrink:0
+   Cell: flex:1 0 0, min-width:0, overflow:hidden, flex-col, gap:8px
+   Num: Noto Serif Regular 31.25px, black, whitespace-nowrap
+   Lbl: DM Sans Medium 12px, rgba(0,0,0,.5), tracking 1.2px, uppercase
+   ──────────────────────────────────────────────────────── */
+.stat-row{
+  display:flex;
+  align-items:center;
+  gap:32px;
+  margin-bottom:32px;
 }
-.stat-lbl{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(0,0,0,.38);line-height:1.5}
+.stat-cell{
+  flex:1 0 0;
+  min-width:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.stat-divider{
+  width:1px;
+  height:40px;
+  background:rgba(0,0,0,.1);
+  flex-shrink:0;
+  align-self:center;
+}
+.stat-num{
+  font-family:var(--serif);
+  font-size:31.25px;
+  font-weight:400;
+  color:#000;
+  line-height:normal;
+  white-space:nowrap;
+}
+.stat-lbl{
+  font-family:'DM Sans',var(--sans);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.5);
+  line-height:1.4;
+}
 
 /* Logo marquee */
 .mq{overflow:hidden;position:relative}
@@ -388,7 +475,7 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
   border:1px solid rgba(0,0,0,.09);border-radius:10px;
   padding:48px 52px 48px;
   box-shadow:0 2px 16px rgba(0,0,0,.05);
-  margin:44px 50px 0;
+  margin-top:44px;width:100%;
 }
 .testi-rule{width:96px;height:1px;background:rgba(0,0,0,.15);margin-bottom:48px}
 .testi-q{
@@ -403,17 +490,12 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
 /* ═══════════════════════════════
    GET STARTED
    ═══════════════════════════════ */
-.gs{background:var(--warm);padding:64px var(--L);text-align:center;border-top:2px solid rgba(186,0,19,.12)}
-.gs-h{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--body);margin-bottom:10px}
-.gs-sub{font-size:16px;color:var(--mid);margin-bottom:36px}
-.btn-gs{
-  font-family:var(--sans);font-size:15px;font-weight:700;
-  color:#fff;background:var(--red);border:none;
-  padding:16px 40px;border-radius:8px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:10px;
-  transition:background 200ms;letter-spacing:.1px;
-}
-.btn-gs:hover{background:#8f0010}
+.gs{background:#fbf9f8;border-top:1px solid #e7bdb8;border-bottom:1px solid #e7bdb8;padding:61px 48px;text-align:center}
+.gs-eyebrow{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:400;letter-spacing:1.8px;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:0}
+.gs-h{font-family:"Noto Serif",Georgia,serif;font-size:32px;font-weight:600;color:#1b1c1c;line-height:1.3;margin-bottom:0}
+.gs-sub{font-family:"Manrope",sans-serif;font-size:16px;font-weight:400;color:#5f5e5e;line-height:1.5;margin-bottom:0}
+.btn-gs{font-family:"DM Sans",sans-serif;font-size:16px;font-weight:500;color:#fff;border:none;width:230px;height:48px;border-radius:5px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;letter-spacing:.0875px;background:linear-gradient(90deg,#b01f24 0%,#b82529 7.14%,#c12b30 14.29%,#c93136 21.43%,#d13738 28.57%,#da3d42 35.71%,#e24248 42.86%,#eb484e 50%,#e24248 57.14%,#da3d42 64.29%,#d13738 71.43%,#c93136 78.57%,#c12b30 85.71%,#b82529 92.86%,#b01f24 100%);box-shadow:0 4px 16px rgba(176,31,36,.15);transition:box-shadow 200ms,filter 200ms}
+.btn-gs:hover{box-shadow:0 6px 24px rgba(176,31,36,.3);filter:brightness(1.06)}
 
 /* ═══════════════════════════════
    RESOURCES
@@ -481,9 +563,11 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
   border-bottom:1px solid rgba(255,255,255,.07);
 }
 .ft-col-h{font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:18px}
-.ft-links{list-style:none;display:flex;flex-direction:column;gap:0}
-.ft-links a{font-size:13px;color:rgba(255,255,255,.3);padding:3px 0;display:block;line-height:1.55;transition:color 180ms}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:0;padding-left:20px}
+.ft-links a{font-size:13px;color:rgba(255,255,255,.3);padding:3px 0;display:flex;align-items:center;gap:8px;line-height:1.55;transition:color 180ms;position:relative}
+.ft-links a::before{content:"";width:5px;height:5px;background:rgba(255,255,255,.2);border-radius:1px;flex-shrink:0;display:inline-block}
 .ft-links a:hover{color:rgba(255,255,255,.65)}
+.ft-links a:hover::before{background:rgba(255,255,255,.5)}
 /* Company overview */
 .ft-co{padding:36px 0}
 .ft-co-h{font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px}
@@ -495,7 +579,7 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
 /* Big "Ken" watermark */
 .ft-ken{
   font-family:var(--serif);
-  font-size:200px;font-weight:700;
+  font-size:clamp(140px,18vw,220px);font-weight:700;
   color:rgba(255,255,255,.05);
   line-height:.85;letter-spacing:-6px;
   user-select:none;pointer-events:none;
@@ -546,7 +630,9 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
 @media(max-width:600px){
   .tnav-links,.tnav-search{display:none}
   .snav-l .snav-report{display:none}
-  .stat-row{grid-template-columns:1fr 1fr}
+  .stat-row{flex-wrap:wrap;gap:20px}
+  .stat-cell{flex:1 1 calc(50% - 20px);min-width:120px}
+  .stat-divider{display:none}
   .masonry{grid-template-columns:1fr}
   .hero-h1{font-size:36px}
   .sh-xl{font-size:28px}
@@ -603,20 +689,34 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
      HERO
      ══════════════════════════════════ -->
 <section class="hero" id="hero">
+  <!-- BI Dashboard image on right, z-index:0 -->
+  <img
+    class="hero-bg-img"
+    src="hero-bg.jpg"
+    alt=""
+    aria-hidden="true"
+  />
+  <!-- Dark-to-transparent overlay, z-index:1 -->
+  <div class="hero-overlay"></div>
+
   <div class="hero-inner">
     <div data-a="up">
       <div class="hero-eyebrow">COMPARE RESEARCH PARTNERS</div>
       <h1 class="hero-h1">Ken Research: A Perfect Alternative to Frost &amp;&nbsp;Sullivan.</h1>
       <p class="hero-sub">From startups to Fortune 1000s, Ken Research delivers consultative depth and execution-ready insights powered by real-time data and market foresight.</p>
+      <!-- Design System CTA: "Connect With Us", gradient button, 48px, DM Sans Medium -->
       <button class="hero-btn">
-        Talk to an Analyst
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M10.5 5.25L14.25 9l-3.75 3.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Connect With Us
+        <span class="arr">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.75 9h10.5M10.5 5.25L14.25 9l-3.75 3.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
       </button>
     </div>
     <div data-a="up" data-d="2">
       <div class="hero-divider"></div>
       <div class="hero-trust-lbl">TRUSTED BY LEADING BRANDS</div>
-      <!-- Real logo images from Figma, 120×39 each with 52px gap -->
       <div class="hero-logos-strip">
         <div class="hero-logos-row">
           <img class="hero-logo-img" src="https://www.figma.com/api/mcp/asset/92483af2-64dc-473c-bed6-260dc33b5196" alt="aramex"/>
@@ -703,15 +803,15 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
     </div>
     <div class="plat-grid">
       <div class="plat-card" data-a="left" data-d="1">
-        <span class="plat-lbl">KEN SURVEY</span>
+        <span class="plat-lbl">KEN Survey</span>
         <div class="plat-div"></div>
-        <div class="plat-title">Unbiased Survey Platform</div>
+        <div class="plat-title" style="font-weight:400">Unbiased Survey Platform</div>
         <p class="plat-body">Ken Survey offers unbiased survey enabled with an exhaustive question bank and panel network and embedded with Hard and Soft Sample Quota as per Clients' Objective. Our actionable insightful survey dashboard available at a competitive quote makes us an ideal Survey Partner for businesses.</p>
       </div>
       <div class="plat-card" data-a="right" data-d="1">
-        <span class="plat-lbl">KEN CONNECT</span>
+        <span class="plat-lbl">KEN Connect</span>
         <div class="plat-div"></div>
-        <div class="plat-title">Comprehensive Consulting Platform</div>
+        <div class="plat-title" style="font-weight:700">Comprehensive Consulting Platform</div>
         <p class="plat-body">Ken Connect is a comprehensive consulting platform designed to guide businesses with data-driven strategies and actionable insights. Leveraging expertise in market dynamics, M&amp;A advisory, IPO readiness, and go-to-market strategies, Ken Connect serves as a strategic partner in navigating complex business landscapes.</p>
       </div>
     </div>
@@ -784,10 +884,25 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
     </div>
     <div class="divider" data-a="fade" data-d="1"></div>
     <div class="stat-row">
-      <div class="stat-cell" data-a="up" data-d="1"><div class="stat-num">70%</div><div class="stat-lbl">OF OUR CLIENTS ARE FORTUNE 2000S</div></div>
-      <div class="stat-cell" data-a="up" data-d="2"><div class="stat-num">17 out of 20</div><div class="stat-lbl">CONSULTING FIRMS ENGAGE WITH US</div></div>
-      <div class="stat-cell" data-a="up" data-d="3"><div class="stat-num">#8</div><div class="stat-lbl">LEADING GOVERNMENT ASSOCIATIONS SERVED</div></div>
-      <div class="stat-cell" data-a="up" data-d="4"><div class="stat-num">70</div><div class="stat-lbl">CLIENT NPS</div></div>
+      <div class="stat-cell" data-a="up" data-d="1">
+        <div class="stat-num">70%</div>
+        <div class="stat-lbl">OF OUR CLIENTS ARE FORTUNE 2000S</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-cell" data-a="up" data-d="2">
+        <div class="stat-num">17 out of 20</div>
+        <div class="stat-lbl">CONSULTING FIRMS ENGAGE WITH US</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-cell" data-a="up" data-d="3">
+        <div class="stat-num">#8</div>
+        <div class="stat-lbl">LEADING GOVERNMENT ASSOCIATIONS SERVED</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-cell" data-a="up" data-d="4">
+        <div class="stat-num">70</div>
+        <div class="stat-lbl">CLIENT NPS</div>
+      </div>
     </div>
     <div class="divider" data-a="fade" data-d="5"></div>
     <!-- Logo marquee with same logoipsum SVGs as Figma -->
@@ -833,13 +948,19 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
 
 
 <!-- ══════════════════════════════════
-     GET STARTED
+     GET STARTED — exact Figma
      ══════════════════════════════════ -->
 <section class="gs">
-  <div data-a="up">
-    <div class="gs-h">Get started</div>
-    <p class="gs-sub">Contact us for tailored solutions.</p>
-    <button class="btn-gs">Talk to an Analyst ↗</button>
+  <div style="max-width:var(--W);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center" data-a="up">
+      <span class="gs-eyebrow">Get Started</span>
+      <h2 class="gs-h">Contact us for tailored solutions.</h2>
+      <p class="gs-sub">Our research team can recommend the right approach for your specific business context.</p>
+    </div>
+    <button class="btn-gs" data-a="up" data-d="1">
+      contact Us
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M10.5 5.25L14.25 9l-3.75 3.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
   </div>
 </section>
 
@@ -1030,7 +1151,7 @@ table.ct{width:100%;border-collapse:collapse;table-layout:fixed}
 
   <!-- Bottom: Ken watermark + right col -->
   <div class="ft-bot">
-    <div class="ft-ken" data-a="left">Ken</div>
+    <div class="ft-ken" data-a="left">ken</div>
     <div class="ft-right" data-a="right">
       <div class="ft-contact">
         <div class="ft-ci">
