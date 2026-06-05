@@ -37,9 +37,9 @@ body{
   box-shadow:0 8px 6px rgba(128,108,224,.15);
   position:relative;z-index:20;
 }
-.nav-logo{display:flex;align-items:center;gap:6px;}
-.nav-logo .lm{width:14.8px;height:20px;display:block;}
-.nav-logo .lw{width:137px;height:10.6px;display:block;}
+.nav-logo{display:flex;align-items:center;gap:8px;}
+.brand-mark{width:18px;height:22px;display:inline-flex;align-items:center;justify-content:center;border:2px solid #141016;border-right-color:#b01f24;color:#b01f24;font-size:12px;font-weight:700;line-height:1;transform:skewY(-6deg);}
+.brand-word{font-size:17px;font-weight:600;letter-spacing:.02em;color:#141016;line-height:1;white-space:nowrap;}
 .nav-ham{display:flex;flex-direction:column;gap:5px;cursor:pointer;}
 .nav-ham span{display:block;width:24px;height:2.5px;background:#141016;border-radius:99px;}
 
@@ -194,7 +194,7 @@ body{
 }
 .p-title{font-size:12.8px;font-weight:600;color:rgba(0,0,0,.9);line-height:16px;}
 .p-link{display:flex;align-items:center;gap:4px;font-size:12.8px;font-weight:500;color:#b01f24;line-height:21px;cursor:pointer;white-space:nowrap;}
-.p-link img{width:16px;height:16px;display:block;}
+.p-link .ico{width:16px;height:16px;display:block;}
 
 /* ─── STEP 2 (typing class on sec-reports) ─── */
 /* Reports list: no overflow, natural height, no extra items */
@@ -282,7 +282,7 @@ body{
   display:flex;align-items:center;justify-content:center;margin-top:2px;
   transition:background .18s ease;
 }
-.r-arr img{width:12px;height:12px;display:block;transform:rotate(-35deg);}
+.r-arr .ico{width:12px;height:12px;display:block;transform:none;}
 
 /* Divider */
 .divider{height:1px;background:#d9d9d9;margin:8px 0;flex-shrink:0;}
@@ -291,7 +291,7 @@ body{
 .tags{display:flex;flex-wrap:wrap;gap:8px;}
 .tag{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.06);font-size:14px;font-weight:400;color:rgba(0,0,0,.4);cursor:pointer;line-height:23.8px;}
 .tag.on{background:rgba(0,0,0,.12);color:rgba(0,0,0,.8);font-size:12.8px;}
-.tag img{width:12px;height:12px;display:block;}
+.tag .ico{width:12px;height:12px;display:block;}
 
 /* Frequently Searched — horizontal scroll row with right fade, Figma-exact */
 .freq-sec{
@@ -345,7 +345,7 @@ body{
 .pill-input{flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:14px;font-weight:400;font-family:'DM Sans',sans-serif;color:rgba(0,0,0,.8);line-height:20px;caret-color:#141016;}
 .pill-input::placeholder{color:rgba(0,0,0,.5);}
 .pill-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.mic-img{width:20px;height:20px;display:block;}
+.mic-img{width:20px;height:20px;display:flex;color:rgba(0,0,0,.75);}
 .clear-x{
   width:22px;height:22px;border-radius:50%;
   background:#f9f7f6;
@@ -354,8 +354,8 @@ body{
   cursor:pointer;
   transition:border-color .2s ease, transform .25s ease;
 }
-.clear-x img{
-  width:8px;height:8px;display:block;
+.clear-x .ico{
+  width:9px;height:9px;display:block;
   opacity:.8;
   transition:opacity .2s ease;
 }
@@ -363,9 +363,21 @@ body{
   border-color:rgba(0,0,0,.12);
   transform:rotate(180deg);
 }
-.clear-x:hover img{
+.clear-x:hover .ico{
   opacity:1;
 }
+
+
+/* Inline SVG icons — no external Figma assets, so icons render on GitHub */
+.ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:currentColor;}
+.ico svg{width:100%;height:100%;display:block;stroke:currentColor;}
+.ico-search{width:18px;height:18px;margin-right:10px;color:rgba(0,0,0,.72);}
+.ico-clock{width:12px;height:12px;color:rgba(0,0,0,.45);}
+.ico-clock.strong{color:rgba(0,0,0,.75);}
+.ico-mic{width:20px;height:20px;color:rgba(0,0,0,.75);}
+.ico-x{width:9px;height:9px;color:rgba(0,0,0,.7);}
+.ico-arrow-up-right{width:12px;height:12px;color:rgba(0,0,0,.72);transform:none;}
+.ico-link-arrow{width:16px;height:16px;color:#b01f24;}
 
 /* ── BOTTOM WRAPPER full width ── */
 @media(max-width:440px){
@@ -378,9 +390,9 @@ body{
 
   <!-- NAV -->
   <nav class="nav">
-    <div class="nav-logo">
-      <img class="lm" src="https://www.figma.com/api/mcp/asset/1b69ee90-f2cb-4856-8c3c-01c18e523b83" alt="">
-      <img class="lw" src="https://www.figma.com/api/mcp/asset/4b3e2584-55b0-47be-9de0-8b8cd6b9e7e4" alt="">
+    <div class="nav-logo" aria-label="Ken Research">
+      <span class="brand-mark" aria-hidden="true">K</span>
+      <span class="brand-word">KEN RESEARCH</span>
     </div>
     <div class="nav-ham"><span></span><span></span><span></span></div>
   </nav>
@@ -432,10 +444,10 @@ body{
           <span class="p-title">Recent Searches</span>
         </div>
         <div class="tags">
-          <div class="tag" onclick="pick('Car Industry')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">Car Industry</div>
-          <div class="tag on" onclick="pick('Market outlook')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.8;">Market outlook</div>
-          <div class="tag" onclick="pick('AI Boom in 2025')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">AI Boom in 2025</div>
-          <div class="tag" onclick="pick('Car Manufacture company')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">Car Manufacture company</div>
+          <div class="tag" onclick="pick('Car Industry')"><span class="ico ico-clock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Car Industry</div>
+          <div class="tag on" onclick="pick('Market outlook')"><span class="ico ico-clock strong" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Market outlook</div>
+          <div class="tag" onclick="pick('AI Boom in 2025')"><span class="ico ico-clock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>AI Boom in 2025</div>
+          <div class="tag" onclick="pick('Car Manufacture company')"><span class="ico ico-clock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Car Manufacture company</div>
         </div>
       </div>
 
@@ -447,7 +459,7 @@ body{
           <span class="p-title">Latest Reports</span>
           <div class="p-link">
             Explore all reports
-            <img src="https://www.figma.com/api/mcp/asset/5d1b2cc0-499a-495c-b4b7-b30982b24a63" alt="">
+            <span class="ico ico-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></span>
           </div>
         </div>
 
@@ -457,28 +469,28 @@ body{
         <div class="rep-scroll" id="rep-scroll">
 
           <!-- Base 5 items (always shown when sec-reports visible) -->
-          <div class="ritem"><div class="r-body"><div class="r-title">KSA Automotive Cloud Solutions Market Outlook to 2030</div><span class="r-cat">Telecommunications and Networking</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem"><div class="r-body"><div class="r-title">United Kingdom Used Car Market</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem"><div class="r-body"><div class="r-title">KSA Automotive Repair and Maintenance Market Outlook to 2030</div><span class="r-cat">Agriculture and Animal Care</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem"><div class="r-body"><div class="r-title">Asia Pacific Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-base-5"><div class="r-body"><div class="r-title">Philippines Used Car Finance Market Outlook to 2028</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem"><div class="r-body"><div class="r-title">KSA Automotive Cloud Solutions Market Outlook to 2030</div><span class="r-cat">Telecommunications and Networking</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem"><div class="r-body"><div class="r-title">United Kingdom Used Car Market</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem"><div class="r-body"><div class="r-title">KSA Automotive Repair and Maintenance Market Outlook to 2030</div><span class="r-cat">Agriculture and Animal Care</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem"><div class="r-body"><div class="r-title">Asia Pacific Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-base-5"><div class="r-body"><div class="r-title">Philippines Used Car Finance Market Outlook to 2028</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
 
           <!-- Extra 15 items — step 3 (complete) only -->
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">India Used Car Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">GCC Used Car Market Outlook to 2028</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Global Automotive Aftermarket Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Southeast Asia Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">UAE Pre-Owned Vehicle Market Report 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Latin America Automotive Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">South Korea Used Car Market Analysis 2025–2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Nigeria Automotive Market Research Report 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Germany Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Australia Used Car Finance Market Outlook to 2028</div><span class="r-cat">Financial Services</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Electric Vehicle Resale Market — Global Outlook 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Middle East Used Commercial Vehicle Market 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Vietnam Automotive Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Brazil Used Car Market — Emerging Trends 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
-          <div class="ritem r-extra"><div class="r-body"><div class="r-title">China Second-Hand Vehicle Market Forecast 2025–2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><img src="https://www.figma.com/api/mcp/asset/dd0e9010-aff3-4bdd-88a6-2505f874cee0" alt=""></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">India Used Car Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">GCC Used Car Market Outlook to 2028</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Global Automotive Aftermarket Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Southeast Asia Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">UAE Pre-Owned Vehicle Market Report 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Latin America Automotive Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">South Korea Used Car Market Analysis 2025–2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Nigeria Automotive Market Research Report 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Germany Used Car Market Outlook to 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Australia Used Car Finance Market Outlook to 2028</div><span class="r-cat">Financial Services</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Electric Vehicle Resale Market — Global Outlook 2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Middle East Used Commercial Vehicle Market 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Vietnam Automotive Market Outlook to 2029</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">Brazil Used Car Market — Emerging Trends 2025</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
+          <div class="ritem r-extra"><div class="r-body"><div class="r-title">China Second-Hand Vehicle Market Forecast 2025–2030</div><span class="r-cat">Automotive and Automotive Components</span></div><div class="r-arr"><span class="ico ico-arrow-up-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></span></div></div>
 
         </div><!-- /rep-scroll -->
 
@@ -487,10 +499,10 @@ body{
           <div class="divider"></div>
           <span class="p-title" style="color:rgba(0,0,0,.9);">Frequently Searches</span>
           <div class="tags">
-            <div class="tag" onclick="pick('Car Industry')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">Car Industry</div>
-            <div class="tag on" onclick="pick('Market outlook')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.8;">Market outlook</div>
-            <div class="tag" onclick="pick('AI Boom in 2025')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">AI Boom in 2025</div>
-            <div class="tag" onclick="pick('Car Manufacture company')"><img src="https://www.figma.com/api/mcp/asset/50d106a3-ff0f-49c9-800c-c1406c5dcd21" alt="" style="opacity:.4;">Car Manufacture company</div>
+            <div class="tag" onclick="pick('Car Industry')"><span class="ico ico-clock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Car Industry</div>
+            <div class="tag on" onclick="pick('Market outlook')"><span class="ico ico-clock strong" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Market outlook</div>
+            <div class="tag" onclick="pick('AI Boom in 2025')"><span class="ico ico-clock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>AI Boom in 2025</div>
+            <div class="tag" onclick="pick('Car Manufacture company')"><span class="ico ico-clock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Car Manufacture company</div>
           </div>
         </div>
 
@@ -499,14 +511,15 @@ body{
       <!-- ★ SEARCH PILL — always at bottom of white card ★ -->
       <div class="pill">
         <div class="pill-left">
+          <span class="ico ico-search" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></span>
           <input class="pill-input" id="inp" type="text"
             placeholder="Search for 'IPO Management'"
             autocomplete="off" spellcheck="false">
         </div>
         <div class="pill-right">
-          <img class="mic-img" id="mic" src="https://www.figma.com/api/mcp/asset/83cf574d-015e-496d-90fd-4c9affb25d75" alt="">
+          <span class="mic-img ico ico-mic" id="mic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg></span>
           <div class="clear-x" id="clr" onclick="clearSearch()">
-            <img src="https://www.figma.com/api/mcp/asset/39ef2158-0b8d-469d-8e56-75d1efab0723" alt="">
+            <span class="ico ico-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></span>
           </div>
         </div>
       </div>
@@ -565,7 +578,7 @@ inp.addEventListener('focus', () => {
 
 inp.addEventListener('input', () => {
   const v = inp.value;
-  mic.style.display = v ? 'none'  : 'block';
+  mic.style.display = v ? 'none'  : 'flex';
   clr.style.display = v ? 'flex'  : 'none';
   if (state !== 'idle') setState(calcState(v));
 });
@@ -577,7 +590,7 @@ function onOverlayClick() {
 
 function clearSearch() {
   inp.value = '';
-  mic.style.display = 'block';
+  mic.style.display = 'flex';
   clr.style.display = 'none';
   inp.focus();
   setState('recent');
