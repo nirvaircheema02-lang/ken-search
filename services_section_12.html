@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500&display=swap" rel="stylesheet" />
+<style>
+  :root{--warm-50:#fefdfd;--warm-100:#fcfbfa;--warm-200:#f9f7f6;--warm-300:#f5f2f1;--warm-400:#f0ebe9;--warm-500:#eae5e3;--warm-600:#d9d1ce;--warm-700:#c8bcb8;--warm-800:#b7a9a3;--warm-900:#a6968e;--card:#FFFFFF;--border:var(--warm-500);--red:#B01F24;--ink:#1A1918;--title:#322d29;--muted:#6f665f;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  .svc{background:linear-gradient(168deg,var(--warm-100) 0%,var(--warm-200) 64%,var(--warm-300) 100%);font-family:"Inter",system-ui,sans-serif;color:var(--ink);padding:48px 40px 56px;width:100%;max-width:1200px;margin:0 auto;overflow:hidden;-webkit-font-smoothing:antialiased;}
+  .svc__inner{max-width:960px;margin:0 auto;}
+  .svc__eyebrow{color:var(--red);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin:0 0 12px;}
+  .svc__heading{font-family:"Newsreader",Georgia,serif;font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.12;letter-spacing:-0.01em;color:var(--ink);margin:0 0 30px;max-width:20ch;}
+  .svc__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+  .card{position:relative;background:var(--card);border:1px solid rgba(0,0,0,0.06);border-radius:10px;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .45s ease;outline:none;min-width:0;}
+  .card:hover{border-color:rgba(0,0,0,0.18);}
+  .card__art{position:relative;width:100%;line-height:0;}
+  .card__art svg{width:100%;height:auto;display:block;}
+  .card__art::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:var(--blend,16%);background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 52%,#fff 100%);pointer-events:none;}
+  .card[data-card="consulting"]{--blend:22%;}
+  .card[data-card="intelligence"]{--blend:15%;}
+  .card[data-card="survey"]{--blend:7%;}
+  .card[data-card="expert"]{--blend:20%;}
+  .card__body{position:relative;padding:0 26px 26px;margin-top:-6px;}
+  .card__title{font-size:20px;font-weight:500;color:var(--title);letter-spacing:-0.01em;margin:0 0 10px;}
+  .card__desc{font-size:15px;line-height:1.6;color:var(--muted);margin:0;max-width:44ch;}
+  .e-pulse{transform-box:view-box;transform-origin:200px 56px;opacity:0;}
+  .e-live .e-pulse{animation:epulse 2s ease-out infinite;}
+  .e-live .e-pulse.p2{animation-delay:1s;}
+  @keyframes epulse{0%{transform:scale(.5);opacity:.45}75%{opacity:0}100%{transform:scale(2.4);opacity:0}}
+  .e-links path{transition:opacity .4s ease;}
+  .e-live .e-links path{animation:eflow .9s linear infinite;}
+  @keyframes eflow{to{stroke-dashoffset:-14;}}
+  @media (max-width:760px){.svc{padding:40px 20px 48px;}.svc__grid{grid-template-columns:1fr;gap:16px;}}
+  @media (prefers-reduced-motion:reduce){.card,.card *{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+<section class="svc">
+  <div class="svc__inner">
+    <p class="svc__eyebrow">Our Services</p>
+    <h2 class="svc__heading">Everything You Need to Read the Market Better</h2>
+    <div class="svc__grid">
+
+      <!-- KEN CONSULTING -->
+      <article class="card" data-card="consulting">
+        <div class="card__art">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="c-clip"><rect x="24" y="18" width="352" height="182" rx="16"/></clipPath>
+              <linearGradient id="c-area" x1="1" y1="1" x2="0.15" y2="0.05"><stop offset="0" stop-color="#9d9289" stop-opacity=".24"/><stop offset="0.5" stop-color="#9d9289" stop-opacity=".09"/><stop offset="1" stop-color="#9d9289" stop-opacity="0"/></linearGradient>
+              <linearGradient id="c-stroke" gradientUnits="userSpaceOnUse" x1="28" y1="0" x2="376" y2="0">
+                <stop offset="0" stop-color="#6f665e" stop-opacity="0.05"/>
+                <stop offset="0.14" stop-color="#6f665e" stop-opacity="0.42"/>
+                <stop offset="0.36" stop-color="#6f665e" stop-opacity="0.9"/>
+                <stop offset="0.58" stop-color="#6f665e" stop-opacity="1"/>
+                <stop offset="0.82" stop-color="#6f665e" stop-opacity="0.6"/>
+                <stop offset="1" stop-color="#6f665e" stop-opacity="0.1"/>
+              </linearGradient>
+              <linearGradient id="c-warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFDFB"/><stop offset="1" stop-color="#FBF6F2"/></linearGradient>
+              <linearGradient id="c-vline" gradientUnits="userSpaceOnUse" x1="0" y1="46" x2="0" y2="200"><stop offset="0" stop-color="#c8bcb8" stop-opacity="0"/><stop offset="0.14" stop-color="#c8bcb8" stop-opacity="0.85"/><stop offset="0.6" stop-color="#c8bcb8" stop-opacity="0.9"/><stop offset="0.9" stop-color="#c8bcb8" stop-opacity="0.3"/><stop offset="1" stop-color="#c8bcb8" stop-opacity="0"/></linearGradient>
+            </defs>
+            <rect x="0" y="0" width="400" height="200" fill="url(#c-warm)"/>
+            <rect x="54" y="8" width="300" height="116" rx="15" fill="#fff" stroke="#f0ebe9"/>
+            <rect x="24" y="18" width="352" height="188" rx="16" fill="#fff" stroke="#eae5e3"/>
+            <text x="40" y="52" font-family="Inter" font-weight="700" font-size="25" fill="#2e2a26" class="c-num">32.6%</text>
+            <path d="M120 40 l5 -8 l5 8 z" fill="#a79d94"/>
+            <text x="41" y="70" font-family="Inter" font-weight="400" font-size="11.5" fill="#a89e95">Data Driven Insights</text>
+            <line x1="32" y1="92" x2="300" y2="92" stroke="#eae5e3" stroke-width="1" stroke-dasharray="5 6"/>
+            <line x1="32" y1="126" x2="300" y2="126" stroke="#eae5e3" stroke-width="1" stroke-dasharray="5 6"/>
+            <g class="c-scene" clip-path="url(#c-clip)">
+              <path class="c-area" d="M28 200 L28 182 C 80 178, 104 166, 140 150 C 172 138, 182 137, 200 136 C 224 134, 236 130, 256 126 C 300 120, 330 72, 376 42 L376 200 Z" fill="url(#c-area)"/>
+              <path class="c-line" d="M28 182 C 80 178, 104 166, 140 150 C 172 138, 182 137, 200 136 C 224 134, 236 130, 256 126 C 300 120, 330 72, 376 42" fill="none" stroke="url(#c-stroke)" stroke-width="2.4" stroke-linecap="round"/>
+              <g class="c-marker">
+                <line class="c-mline" x1="256" y1="46" x2="256" y2="200" stroke="url(#c-vline)" stroke-width="1.1"/>
+                <circle class="c-dot" cx="256" cy="126" r="5.4" fill="#6f665e" stroke="#fff" stroke-width="2.2"/>
+                <g class="c-tip" transform="translate(256,108)"><rect x="-26" y="-11" width="52" height="20" rx="5" fill="#6f665e"/><text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Inter" font-weight="500" font-size="11" fill="#fff" class="c-tipnum">32.6%</text></g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Ken Consulting</h3>
+          <p class="card__desc">Market entry, market penetration, deals and IPO advisory, location intelligence, and account intelligence built around growth and expansion decisions.</p>
+        </div>
+      </article>
+
+      <!-- KEN INTELLIGENCE -->
+      <article class="card" data-card="intelligence">
+        <div class="card__art">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="i-shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#8a7d74" flood-opacity=".16"/></filter>
+              <filter id="i-shadow2" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#8a7d74" flood-opacity=".10"/></filter>
+              <radialGradient id="i-glow" cx="50%" cy="38%" r="66%"><stop offset="0" stop-color="#efe9e4"/><stop offset="0.4" stop-color="#f4f0ed" stop-opacity=".55"/><stop offset="0.75" stop-color="#f7f4f2" stop-opacity=".18"/><stop offset="1" stop-color="#f7f4f2" stop-opacity="0"/></radialGradient>
+              <linearGradient id="i-ring" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ece5e0"/><stop offset="0.6" stop-color="#f2ede9" stop-opacity="0.5"/><stop offset="1" stop-color="#f6f2f0" stop-opacity="0.12"/></linearGradient>
+            </defs>
+            <rect x="0" y="0" width="400" height="200" fill="#fcfbfa"/>
+            <rect x="0" y="0" width="400" height="200" fill="url(#i-glow)"/>
+            <g fill="none"><circle cx="200" cy="90" r="156" stroke="url(#i-ring)"/><circle cx="200" cy="90" r="120" stroke="url(#i-ring)"/><circle cx="200" cy="90" r="86" stroke="url(#i-ring)"/><circle cx="200" cy="90" r="52" stroke="url(#i-ring)"/></g>
+            <circle cx="200" cy="90" r="90" fill="url(#i-glow)"/>
+            <g class="i-back">
+              <g transform="rotate(-5 148 104)"><rect x="110" y="44" width="72" height="120" rx="3" fill="#ffffff" stroke="#eae5e3" filter="url(#i-shadow2)"/></g>
+              <g transform="rotate(5 256 96)"><path d="M222 38 H288 L304 54 V156 H222 Z" fill="#ffffff" stroke="#eae5e3" filter="url(#i-shadow2)"/><path d="M288 38 V54 H304 Z" fill="#f0ebe9"/></g>
+            </g>
+            <g class="i-front" filter="url(#i-shadow)">
+              <path d="M146 32 H232 L252 52 V176 H146 Z" fill="#FFFFFF" stroke="#eae5e3"/>
+              <path d="M232 32 V52 H252 Z" fill="#f0ebe9"/>
+              <path d="M232 32 L252 52" fill="none" stroke="#eae5e3" stroke-width="1"/>
+              <circle cx="168" cy="56" r="14" fill="#efe9e6"/>
+              <path class="i-pie" d="M168 56 L168 42 A14 14 0 0 1 182 56 Z" fill="#776d64"/>
+              <text x="156" y="92" font-family="Newsreader, serif" font-size="9" fill="#a79d94">Vietnam EV Market</text>
+              <rect x="156" y="110" width="86" height="6" rx="3" fill="#eae5e3"/>
+              <rect x="156" y="124" width="86" height="6" rx="3" fill="#eae5e3"/>
+              <rect x="156" y="138" width="86" height="6" rx="3" fill="#eae5e3"/>
+              <rect x="156" y="152" width="64" height="6" rx="3" fill="#eae5e3"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Ken Intelligence</h3>
+          <p class="card__desc">Industry reports, global reports, regional reports, and competitive benchmarking covering market size, demand shifts, competition, and future outlook.</p>
+        </div>
+      </article>
+
+      <!-- KEN SURVEY -->
+      <article class="card" data-card="survey">
+        <div class="card__art">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="s-arc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#d2c8bf"/><stop offset="1" stop-color="#7a716a"/></linearGradient>
+              <filter id="s-shadow" x="-20%" y="-30%" width="140%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#9a8f86" flood-opacity=".11"/></filter>
+            </defs>
+            <rect x="0" y="0" width="400" height="200" fill="#FDFDFC"/>
+            <g stroke="#f8f6f5" stroke-width="1"><line x1="90" y1="0" x2="90" y2="200"/><line x1="200" y1="0" x2="200" y2="200"/><line x1="310" y1="0" x2="310" y2="200"/><line x1="0" y1="58" x2="400" y2="58"/><line x1="0" y1="126" x2="400" y2="126"/></g>
+            <path id="s-gauge-track" fill="none" stroke="#eee9e5" stroke-width="3.3" stroke-linecap="round"/>
+            <path id="s-gauge-prog" fill="none" stroke="url(#s-arc)" stroke-width="3.3" stroke-linecap="round"/>
+            <circle id="s-gauge-knob" r="4.8" fill="#fff" stroke="#a89e95" stroke-width="1.8"/>
+            <text x="200" y="63" text-anchor="middle" font-family="Inter" font-weight="700" font-size="22" fill="#2e2a26" class="s-num">78</text>
+            <text x="200" y="78" text-anchor="middle" font-family="Inter" font-size="10.5" fill="#4a433d">CSAT Score</text>
+            <g transform="translate(200,92)"><rect x="-30" y="-10" width="60" height="17" rx="5" fill="#eae5e3"/><text x="0" y="2.5" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6b635c">To improve</text></g>
+            <g filter="url(#s-shadow)"><rect x="64" y="102" width="272" height="28" rx="9" fill="#fff"/></g>
+            <circle cx="90" cy="116" r="10.5" fill="none" stroke="#eae5e3" stroke-width="2.5"/>
+            <circle id="s-mini-prog" cx="90" cy="116" r="10.5" fill="none" stroke="#7a716a" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="90" y="119.5" text-anchor="middle" font-family="Inter" font-weight="600" font-size="10" fill="#2e2a26" class="s-mini-num">52</text>
+            <rect x="114" y="113" width="118" height="6" rx="3" fill="#eae5e3"/>
+            <g transform="translate(302,116)"><rect x="-32" y="-9" width="64" height="17" rx="5" fill="#eae5e3"/><text x="0" y="2.5" text-anchor="middle" font-family="Inter" font-size="9" fill="#6b635c">High Impact</text></g>
+            <g filter="url(#s-shadow)"><rect x="48" y="132" width="304" height="28" rx="9" fill="#fff"/></g>
+            <g class="s-emoji"><circle cx="84" cy="146" r="10.5" fill="#9d9289"/><circle cx="80.2" cy="143.7" r="1.4" fill="#fff"/><circle cx="87.8" cy="143.7" r="1.4" fill="#fff"/><path d="M79 148.5 q5 4.6 10 0" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></g>
+            <g stroke-width="1.4" fill="none">
+              <circle cx="142" cy="146" r="10.5" stroke="#eae5e3"/><path d="M137.8 144.5 q4.2 3.6 8.4 0" stroke="#cabfb6"/>
+              <circle cx="200" cy="146" r="10.5" stroke="#eae5e3"/><line x1="195.8" y1="147.5" x2="204.2" y2="147.5" stroke="#cabfb6"/>
+              <circle cx="258" cy="146" r="10.5" stroke="#eae5e3"/><path d="M253.8 150.5 q4.2 -3.6 8.4 0" stroke="#cabfb6"/>
+              <circle cx="316" cy="146" r="10.5" stroke="#eae5e3"/><line x1="311.8" y1="147.5" x2="320.2" y2="147.5" stroke="#cabfb6"/>
+            </g>
+            <g filter="url(#s-shadow)"><rect x="34" y="162" width="332" height="28" rx="9" fill="#fff"/></g>
+            <rect x="56" y="170" width="188" height="5.5" rx="2.75" fill="#eae5e3"/>
+            <g class="s-checks" fill="none">
+              <g class="s-chk"><rect x="58" y="179" width="10.5" height="10.5" rx="3" fill="#d3cdc6"/><path d="M60.6 184 l2.1 2.1 l3.6 -4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+              <g class="s-chk"><rect x="124" y="179" width="10.5" height="10.5" rx="3" fill="#f0ebe9" stroke="#d9d1ce"/></g>
+              <g class="s-chk"><rect x="190" y="179" width="10.5" height="10.5" rx="3" fill="#f0ebe9" stroke="#d9d1ce"/></g>
+              <g class="s-chk"><rect x="256" y="179" width="10.5" height="10.5" rx="3" fill="#d3cdc6"/><path d="M258.6 184 l2.1 2.1 l3.6 -4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+              <g class="s-chk"><rect x="312" y="179" width="10.5" height="10.5" rx="3" fill="#d3cdc6"/><path d="M314.6 184 l2.1 2.1 l3.6 -4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+            </g>
+          </svg>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Ken Survey</h3>
+          <p class="card__desc">Brand perception, C-SAT, dealer's voice, employee engagement, and CNDP studies designed to capture feedback from target respondents.</p>
+        </div>
+      </article>
+
+      <!-- KEN EXPERT PANEL -->
+      <article class="card" data-card="expert">
+        <div class="card__art">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="e-warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBF5F0"/><stop offset="0.4" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FCF7F3"/></linearGradient>
+              <filter id="e-shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#8a7d74" flood-opacity=".18"/></filter>
+              <radialGradient id="e-dots" cx="12%" cy="10%" r="32%"><stop offset="0" stop-color="#f0ebe9"/><stop offset="1" stop-color="#f0ebe9" stop-opacity="0"/></radialGradient>
+              <linearGradient id="e-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.55" stop-color="#fff" stop-opacity="0.7"/><stop offset="0.8" stop-color="#fff" stop-opacity="0.98"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient>
+            </defs>
+            <rect x="0" y="0" width="400" height="200" fill="url(#e-warm)"/>
+            <rect x="0" y="0" width="400" height="200" fill="url(#e-dots)"/>
+            <rect x="22" y="14" width="356" height="152" rx="14" fill="#fff"/>
+            <path d="M22 166 V28 A14 14 0 0 1 36 14 H364 A14 14 0 0 1 378 28 V166" fill="none" stroke="#eae5e3" stroke-width="1"/>
+            <circle cx="46" cy="38" r="10" fill="#eae5e3"/>
+            <rect x="64" y="34" width="32" height="4.5" rx="2.25" fill="#eae5e3"/>
+            <rect x="64" y="44" width="96" height="5.5" rx="2.75" fill="#f0ebe9"/>
+            <rect x="0" y="104" width="400" height="96" fill="url(#e-fade)"/>
+            <g class="e-links" fill="none" stroke="#c8bcb8" stroke-width="1.3" stroke-dasharray="3 4">
+              <path d="M200 76 C 178 74, 152 72, 130 72"/>
+              <path d="M200 76 C 224 76, 250 80, 270 84"/>
+              <path d="M200 76 C 160 84, 118 106, 94 128"/>
+              <path d="M200 76 C 190 100, 178 128, 168 150"/>
+              <path d="M200 76 C 210 100, 222 128, 232 150"/>
+              <path d="M200 76 C 258 88, 292 108, 308 128"/>
+            </g>
+            <g class="e-nodes">
+              <g class="e-node sm" data-x="130" data-y="72"></g>
+              <g class="e-node sm" data-x="270" data-y="84"></g>
+              <g class="e-node" data-x="94" data-y="128"></g>
+              <g class="e-node" data-x="168" data-y="150"></g>
+              <g class="e-node" data-x="232" data-y="150"></g>
+              <g class="e-node" data-x="308" data-y="128"></g>
+            </g>
+            <circle class="e-pulse" cx="200" cy="56" r="21" fill="none" stroke="#B01F24" stroke-width="1.8"/>
+            <circle class="e-pulse p2" cx="200" cy="56" r="21" fill="none" stroke="#B01F24" stroke-width="1.8"/>
+            <g class="e-center" filter="url(#e-shadow)">
+              <circle cx="200" cy="56" r="23" fill="#fff"/>
+              <circle cx="200" cy="56" r="20" fill="#5f574f"/>
+              <circle cx="200" cy="50" r="6" fill="#fff"/>
+              <path d="M188 70 a12 9.5 0 0 1 24 0 Z" fill="#fff"/>
+              <rect x="198.7" y="56" width="2.6" height="12" rx="1" fill="#5f574f"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Ken Expert Panel</h3>
+          <p class="card__desc">Industry professionals and sector specialists for primary conversations, market validation, and practical on-ground perspectives.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var svgNS="http://www.w3.org/2000/svg";
+  function polar(cx,cy,r,deg){var a=deg*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)];}
+  function arcPath(cx,cy,r,s,e){var d="",n=80;for(var i=0;i<=n;i++){var deg=s+(e-s)*(i/n);var p=polar(cx,cy,r,deg);d+=(i?"L":"M")+p[0].toFixed(2)+" "+p[1].toFixed(2)+" ";}return d.trim();}
+  function easeInOut(t){return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function scaleAbout(k,cx,cy){return "translate("+cx+" "+cy+") scale("+k+") translate("+(-cx)+" "+(-cy)+")";}
+  var CCURVE=[
+    [[28,182],[80,178],[104,166],[140,150]],
+    [[140,150],[172,138],[182,137],[200,136]],
+    [[200,136],[224,134],[236,130],[256,126]],
+    [[256,126],[300,120],[330,72],[376,42]]
+  ];
+  function curvePoint(f){var ff=clamp(f,0,0.999)*4,seg=Math.min(3,Math.floor(ff)),t=ff-seg,c=CCURVE[seg],mt=1-t;
+    var b0=mt*mt*mt,b1=3*mt*mt*t,b2=3*mt*t*t,b3=t*t*t;
+    return {x:b0*c[0][0]+b1*c[1][0]+b2*c[2][0]+b3*c[3][0], y:b0*c[0][1]+b1*c[1][1]+b2*c[2][1]+b3*c[3][1]};}
+
+  var GC={cx:200,cy:58,r:42,start:128,end:412};
+  var track=document.getElementById("s-gauge-track"),prog=document.getElementById("s-gauge-prog"),knob=document.getElementById("s-gauge-knob");
+  if(track){var full=arcPath(GC.cx,GC.cy,GC.r,GC.start,GC.end);track.setAttribute("d",full);prog.setAttribute("d",full);prog.setAttribute("pathLength","100");prog.style.strokeDasharray="100";}
+  var miniProg=document.getElementById("s-mini-prog"),mc=2*Math.PI*10.5;
+  if(miniProg){miniProg.style.strokeDasharray=mc;miniProg.setAttribute("transform","rotate(-108 90 116)");}
+
+  document.querySelectorAll(".e-node").forEach(function(g){
+    var x=+g.dataset.x,y=+g.dataset.y,small=g.classList.contains("sm");
+    var R=small?10:14, hr=small?2.4:3.2, bw=small?4.6:6, bh=small?4.2:5.2;
+    var ring=document.createElementNS(svgNS,"circle");ring.setAttribute("cx",x);ring.setAttribute("cy",y);ring.setAttribute("r",R);ring.setAttribute("fill","#f5f2f1");ring.setAttribute("stroke","#eae5e3");ring.setAttribute("stroke-width","1");
+    var head=document.createElementNS(svgNS,"circle");head.setAttribute("cx",x);head.setAttribute("cy",y-(small?2:2.6));head.setAttribute("r",hr);head.setAttribute("fill","#b7a9a3");
+    var body=document.createElementNS(svgNS,"path");body.setAttribute("d","M"+(x-bw)+" "+(y+bh)+" a"+bw+" "+(bh-0.4)+" 0 0 1 "+(2*bw)+" 0 Z");body.setAttribute("fill","#b7a9a3");
+    g.appendChild(ring);g.appendChild(head);g.appendChild(body);
+  });
+
+  function applyConsulting(card,p){
+    var num=lerp(10,32.6,p).toFixed(1)+"%";
+    var pt=curvePoint(lerp(0.34,0.75,p));
+    var x=pt.x.toFixed(1),y=pt.y.toFixed(1);
+    card.querySelector(".c-mline").setAttribute("x1",x);card.querySelector(".c-mline").setAttribute("x2",x);
+    var dot=card.querySelector(".c-dot");dot.setAttribute("cx",x);dot.setAttribute("cy",y);
+    card.querySelector(".c-tip").setAttribute("transform","translate("+clamp(pt.x,38,320).toFixed(1)+","+(pt.y-18).toFixed(1)+")");
+    card.querySelector(".c-num").textContent=num;card.querySelector(".c-tipnum").textContent=num;
+    card.querySelector(".c-area").style.opacity=lerp(0.85,1,p);
+  }
+  function pieWedge(deg){var cx=168,cy=56,r=14,rad=deg*Math.PI/180;var ex=cx+r*Math.sin(rad),ey=cy-r*Math.cos(rad);return "M"+cx+" "+cy+" L"+cx+" "+(cy-r)+" A"+r+" "+r+" 0 "+(deg>180?1:0)+" 1 "+ex.toFixed(2)+" "+ey.toFixed(2)+" Z";}
+  function applyIntelligence(card,p){
+    card.querySelector(".i-front").setAttribute("transform","translate(0,"+(-7*p).toFixed(2)+") "+scaleAbout(1+0.03*p,199,90));
+    card.querySelector(".i-back").setAttribute("transform","translate("+(5*p).toFixed(2)+","+(-2*p).toFixed(2)+")");
+    card.querySelector(".i-pie").setAttribute("d",pieWedge(lerp(90,224,p)));
+  }
+  function applySurvey(card,p){
+    var csat=Math.round(lerp(78,88,p));prog.style.strokeDashoffset=100-csat;card.querySelector(".s-num").textContent=csat;
+    var kp=polar(GC.cx,GC.cy,GC.r,GC.start+(GC.end-GC.start)*(csat/100));knob.setAttribute("cx",kp[0].toFixed(1));knob.setAttribute("cy",kp[1].toFixed(1));
+    var mini=Math.round(lerp(52,62,p));miniProg.style.strokeDashoffset=mc*(1-mini/100);card.querySelector(".s-mini-num").textContent=mini;
+    card.querySelector(".s-emoji").setAttribute("transform",scaleAbout(1+0.09*p,84,146));
+  }
+  function applyExpert(card,p){
+    card.querySelectorAll(".e-links path").forEach(function(pth){pth.style.opacity=lerp(0.55,1,p);});
+    card.querySelectorAll(".e-node").forEach(function(g){g.style.opacity=1;g.setAttribute("transform",scaleAbout(1+0.06*p,+g.dataset.x,+g.dataset.y));});
+    card.querySelector(".e-center").setAttribute("transform",scaleAbout(1+0.05*p,200,56));
+    card.classList.toggle("e-live",p>0.02);
+  }
+  var appliers={consulting:applyConsulting,intelligence:applyIntelligence,survey:applySurvey,expert:applyExpert};
+
+  document.querySelectorAll(".card").forEach(function(card){
+    var apply=appliers[card.dataset.card];card._cur=0;apply(card,0);var replayT=null;
+    function to(t){
+      if(reduce){card._cur=t;apply(card,t);return;}
+      if(card._raf)cancelAnimationFrame(card._raf);
+      var from=card._cur,dur=280+460*Math.abs(t-from),start=performance.now();
+      function step(now){var raw=clamp((now-start)/dur,0,1),v=from+(t-from)*easeInOut(raw);card._cur=v;apply(card,v);if(raw<1)card._raf=requestAnimationFrame(step);else card._raf=null;}
+      card._raf=requestAnimationFrame(step);
+    }
+    card._to=to;
+    card.addEventListener("mouseenter",function(){clearTimeout(replayT);to(1);});
+    card.addEventListener("mouseleave",function(){to(0);});
+    card.setAttribute("tabindex","0");
+    card.addEventListener("focusin",function(){clearTimeout(replayT);to(1);});
+    card.addEventListener("focusout",function(){to(0);});
+    card.addEventListener("click",function(){clearTimeout(replayT);to(1);replayT=setTimeout(function(){if(!card.matches(":hover"))to(0);},2000);});
+  });
+
+  if(!reduce&&"IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var c=en.target;if(!c._demoed){c._demoed=true;c._to(1);setTimeout(function(){if(!c.matches(":hover"))c._to(0);},1800);}}});},{threshold:0.4});
+    document.querySelectorAll(".card").forEach(function(c){io.observe(c);});
+  }
+})();
+</script>
+</body>
+</html>
